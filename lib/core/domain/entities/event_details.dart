@@ -7,8 +7,8 @@ import 'package:movies_app/tv_shows/domain/entities/season.dart';
 
 // ignore: must_be_immutable
 class EventDetails extends Equatable {
-  final int id
-  final String name ;
+  final int id;
+  final String name;
   final String description;
   final String donationStartDate;
   final String donationEndDate;
@@ -19,16 +19,15 @@ class EventDetails extends Equatable {
   final int eventCategoryId;
   final String university;
   final String status;
-  final String origanizationStatus;
+  final String organizationStatus;
   final bool isDonation;
   final double totalCost;
-  final List<Post>? reviews;
-  // event
-  final List<Image>? seasons;
-  final List<Media> similar;
+  final List<Post>? post;
+  final List<Image>? eventImage;
+  final List<EventProduct>? similar;
   bool isAdded;
 
-  MediaDetails({
+  EventDetails({
     this.id,
     required this.tmdbID,
     required this.title,
