@@ -9,7 +9,7 @@ class WatchlistItemModel extends Media {
     required super.posterUrl,
     required super.backdropUrl,
     required super.overview,
-    required super.isMovie,
+    required super.isEvent,
   });
 
   factory WatchlistItemModel.fromEntity(Media media) {
@@ -21,7 +21,7 @@ class WatchlistItemModel extends Media {
       posterUrl: media.posterUrl,
       backdropUrl: media.backdropUrl,
       overview: media.overview,
-      isMovie: media.isMovie,
+      isEvent: media.isEvent,
     );
   }
 }

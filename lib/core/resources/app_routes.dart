@@ -1,8 +1,8 @@
 class AppRoutes {
-  static const String moviesRoute = 'movies';
-  static const String movieDetailsRoute = 'movieDetails';
-  static const String popularMoviesRoute = 'popularMovies';
-  static const String topRatedMoviesRoute = 'topRatedMovies';
+  static const String eventsRoute = 'events';
+  static const String eventDetailsRoute = 'eventDetails';
+  static const String popularEventsRoute = 'popularEvents';
+  static const String topRatedEventsRoute = 'topRatedEvents';
 
   static const String tvShowsRoute = 'tvShows';
   static const String tvShowDetailsRoute = 'tvShowDetails';

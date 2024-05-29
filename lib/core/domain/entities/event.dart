@@ -89,6 +89,6 @@ class Event extends Equatable {
         voteAverage,
         releaseDate,
         overview,
-        isMovie,
+        isEvent,
       ];
 }

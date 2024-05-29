@@ -1,23 +1,18 @@
-import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/presentation/pages/main_page.dart';
-import 'package:eventzone/movies/presentation/views/movie_details_view.dart';
-import 'package:eventzone/movies/presentation/views/movies_view.dart';
-import 'package:eventzone/movies/presentation/views/popular_movies_view.dart';
-import 'package:eventzone/movies/presentation/views/top_rated_movies_view.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/search/presentation/views/search_view.dart';
 import 'package:eventzone/tv_shows/presentation/views/popular_tv_shows_view.dart';
 import 'package:eventzone/tv_shows/presentation/views/top_rated_tv_shows_view.dart';
 import 'package:eventzone/tv_shows/presentation/views/tv_show_details_view.dart';
 import 'package:eventzone/tv_shows/presentation/views/tv_shows_view.dart';
-
-import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/watchlist/presentation/views/watchlist_view.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
-const String moviesPath = '/movies';
-const String movieDetailsPath = 'movieDetails/:movieId';
-const String popularMoviesPath = 'popularMovies';
-const String topRatedMoviesPath = 'topRatedMovies';
+const String eventsPath = '/events';
+const String eventDetailsPath = 'eventDetails/:eventId';
+const String popularEventsPath = 'popularEvents';
+const String topRatedEventsPath = 'topRatedEvents';
 const String tvShowsPath = '/tvShows';
 const String tvShowDetailsPath = 'tvShowDetails/:tvShowId';
 const String popularTVShowsPath = 'popularTVShows';
@@ -27,39 +22,39 @@ const String watchlistPath = '/watchlist';
 
 class AppRouter {
   GoRouter router = GoRouter(
-    initialLocation: moviesPath,
+    initialLocation: eventsPath,
     routes: [
       ShellRoute(
         builder: (context, state, child) => MainPage(child: child),
         routes: [
           GoRoute(
-            name: AppRoutes.moviesRoute,
-            path: moviesPath,
+            name: AppRoutes.eventsRoute,
+            path: eventsPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: MoviesView(),
+              child: EventsView(),
             ),
             routes: [
               GoRoute(
-                name: AppRoutes.movieDetailsRoute,
-                path: movieDetailsPath,
+                name: AppRoutes.eventDetailsRoute,
+                path: eventDetailsPath,
                 pageBuilder: (context, state) => CupertinoPage(
-                  child: MovieDetailsView(
-                    movieId: int.parse(state.params['movieId']!),
+                  child: EventDetailsView(
+                    eventId: int.parse(state.params['eventId']!),
                   ),
                 ),
               ),
               GoRoute(
-                name: AppRoutes.popularMoviesRoute,
-                path: popularMoviesPath,
+                name: AppRoutes.popularEventsRoute,
+                path: popularEventsPath,
                 pageBuilder: (context, state) => const CupertinoPage(
-                  child: PopularMoviesView(),
+                  child: PopularEventsView(),
                 ),
               ),
               GoRoute(
-                name: AppRoutes.topRatedMoviesRoute,
-                path: topRatedMoviesPath,
+                name: AppRoutes.topRatedEventsRoute,
+                path: topRatedEventsPath,
                 pageBuilder: (context, state) => const CupertinoPage(
-                  child: TopRatedMoviesView(),
+                  child: TopRatedEventsView(),
                 ),
               ),
             ],

@@ -6,7 +6,7 @@ class SearchResultItemModel extends SearchResultItem {
     required super.tmdbID,
     required super.posterUrl,
     required super.title,
-    required super.isMovie,
+    required super.isEvent,
   });
 
   factory SearchResultItemModel.fromJson(Map<String, dynamic> json) {
@@ -14,7 +14,7 @@ class SearchResultItemModel extends SearchResultItem {
       tmdbID: json['id'],
       posterUrl: getPosterUrl(json['poster_path']),
       title: json['title'] ?? json['name'],
-      isMovie: json['media_type'] == 'movie',
+      isEvent: json['media_type'] == 'event',
     );
   }
 }

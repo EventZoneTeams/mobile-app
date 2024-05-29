@@ -1,10 +1,9 @@
+import 'package:eventzone/core/resources/app_router.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:eventzone/core/resources/app_router.dart';
-import 'package:eventzone/core/resources/app_strings.dart';
-
-import 'package:eventzone/core/resources/app_routes.dart';
-import 'package:eventzone/core/resources/app_values.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -25,7 +24,7 @@ class _MainPageState extends State<MainPage> {
       body: WillPopScope(
         onWillPop: () async {
           final String location = GoRouterState.of(context).location;
-          if (!location.startsWith(moviesPath)) {
+          if (!location.startsWith(eventsPath)) {
             _onItemTapped(0, context);
           }
           return true;
@@ -35,9 +34,9 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            label: AppStrings.movies,
+            label: AppStrings.events,
             icon: Icon(
-              Icons.movie_creation_rounded,
+              Icons.event_creation_rounded,
               size: AppSize.s20,
             ),
           ),
@@ -71,7 +70,7 @@ class _MainPageState extends State<MainPage> {
 
   int _getSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith(moviesPath)) {
+    if (location.startsWith(eventsPath)) {
       return 0;
     }
     if (location.startsWith(tvShowsPath)) {
@@ -89,7 +88,7 @@ class _MainPageState extends State<MainPage> {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.goNamed(AppRoutes.moviesRoute);
+        context.goNamed(AppRoutes.eventsRoute);
         break;
       case 1:
         context.goNamed(AppRoutes.tvShowsRoute);

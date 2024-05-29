@@ -21,7 +21,7 @@ class ApiConstants {
   //
   // static const String eventFeedback = '$baseUrl/event-products';
 
-  // movies paths
+  // events paths
   static String userLogin(String uid)
   {
     return  '$user/$uid';
@@ -29,15 +29,15 @@ class ApiConstants {
 
   static String userRegister(String )
 
-  static const String topRatedMoviesPath =
+  static const String topRatedEventsPath =
 
-  static String getMovieDetailsPath(int movieId) {
+  static String getEventDetailsPath(int eventId) {
   }
 
-  static String getAllPopularMoviesPath(int page) {
+  static String getAllPopularEventsPath(int page) {
   }
 
-  static String getAllTopRatedMoviesPath(int page) {
+  static String getAllTopRatedEventsPath(int page) {
   }
 
   // tv shows paths

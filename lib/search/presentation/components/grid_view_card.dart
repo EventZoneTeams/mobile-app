@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
 import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/core/resources/app_values.dart';
 import 'package:eventzone/search/domain/entities/search_result_item.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class GridViewCard extends StatelessWidget {
   const GridViewCard({
@@ -20,9 +20,9 @@ class GridViewCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            item.isMovie
-                ? context.pushNamed(AppRoutes.movieDetailsRoute,
-                    params: {'movieId': item.tmdbID.toString()})
+            item.isEvent
+                ? context.pushNamed(AppRoutes.eventDetailsRoute,
+                    params: {'eventId': item.tmdbID.toString()})
                 : context.pushNamed(AppRoutes.tvShowDetailsRoute,
                     params: {'tvShowId': item.tmdbID.toString()});
           },

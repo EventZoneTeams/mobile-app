@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
-import 'package:eventzone/movies/domain/entities/cast.dart';
-import 'package:eventzone/movies/domain/entities/review.dart';
+import 'package:eventzone/events/domain/entities/cast.dart';
+import 'package:eventzone/events/domain/entities/review.dart';
 import 'package:eventzone/tv_shows/domain/entities/episode.dart';
 import 'package:eventzone/tv_shows/domain/entities/season.dart';
 

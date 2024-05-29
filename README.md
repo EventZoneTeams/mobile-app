@@ -1,17 +1,17 @@
 
 # Movie App
-Movie app made in Flutter with clean architecture using BLoC, Hive and the movie db API.
+Movie app made in Flutter with clean architecture using BLoC, Hive and the event db API.
 
 ## Features
 - Search feature
 - Watchlist feature
-- Now playing movies
-- Popular movies
-- Top rated movies
+- Now playing events
+- Popular events
+- Top rated events
 - Movie details
 - Movie cast
 - Movie reviews
-- Similar movies
+- Similar events
 - On air tv shows
 - Popular tv shows
 - Top rated tv shows
@@ -22,21 +22,21 @@ Movie app made in Flutter with clean architecture using BLoC, Hive and the movie
 
 ## Screenshots
 <p>
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/01.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/02.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/03.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/04.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/05.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/06.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/01.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/02.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/03.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/04.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/05.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/06.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/07.png" width="250" />
+  <img src="https://github.com/mohamadayash1/flutter-event-app/blob/main/screenshots/08.png" width="250" />
 </p>
 
 ## Installation
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/mohamadayash22/flutter-movie-app.git
-cd flutter-movie-app
+git clone https://github.com/SWD-Student-Event-Forum/mobile-app.git
+cd mobile-app
 ```
 ### 2. Run pub get
 ```bash

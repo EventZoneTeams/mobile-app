@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/data/network/api_constants.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
-import 'package:eventzone/core/presentation/components/section_listview_card.dart';
 import 'package:eventzone/core/presentation/components/overview_section.dart';
 import 'package:eventzone/core/presentation/components/section_listview.dart';
+import 'package:eventzone/core/presentation/components/section_listview_card.dart';
 import 'package:eventzone/core/presentation/components/section_title.dart';
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_values.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 String getDate(String? date) {
   if (date == null || date.isEmpty) {
@@ -71,7 +71,7 @@ String getPosterUrl(String? path) {
   if (path != null) {
     return ApiConstants.basePosterUrl + path;
   } else {
-    return ApiConstants.moviePlaceHolder;
+    return ApiConstants.eventPlaceHolder;
   }
 }
 
@@ -79,7 +79,7 @@ String getBackdropUrl(String? path) {
   if (path != null) {
     return ApiConstants.baseBackdropUrl + path;
   } else {
-    return ApiConstants.moviePlaceHolder;
+    return ApiConstants.eventPlaceHolder;
   }
 }
 
@@ -181,10 +181,10 @@ String getTrailerUrl(Map<String, dynamic> json) {
 }
 
 void navigateToDetailsView(BuildContext context, Media media) {
-  if (media.isMovie) {
+  if (media.isEvent) {
     context.pushNamed(
-      AppRoutes.movieDetailsRoute,
-      params: {'movieId': media.tmdbID.toString()},
+      AppRoutes.eventDetailsRoute,
+      params: {'eventId': media.tmdbID.toString()},
     );
   } else {
     context.pushNamed(

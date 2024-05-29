@@ -4,13 +4,13 @@ class SearchResultItem extends Equatable {
   final int tmdbID;
   final String posterUrl;
   final String title;
-  final bool isMovie;
+  final bool isEvent;
 
   const SearchResultItem({
     required this.tmdbID,
     required this.posterUrl,
     required this.title,
-    required this.isMovie,
+    required this.isEvent,
   });
 
   @override
@@ -18,6 +18,6 @@ class SearchResultItem extends Equatable {
         tmdbID,
         posterUrl,
         title,
-        isMovie,
+        isEvent,
       ];
 }

@@ -24,7 +24,7 @@ class MediaAdapter extends TypeAdapter<Media> {
       voteAverage: fields[4] as double,
       releaseDate: fields[5] as String,
       overview: fields[6] as String,
-      isMovie: fields[7] as bool,
+      isEvent: fields[7] as bool,
     );
   }
 
@@ -47,7 +47,7 @@ class MediaAdapter extends TypeAdapter<Media> {
       ..writeByte(6)
       ..write(obj.overview)
       ..writeByte(7)
-      ..write(obj.isMovie);
+      ..write(obj.isEvent);
   }
 
   @override

@@ -1,13 +1,11 @@
-import 'package:get_it/get_it.dart';
-import 'package:eventzone/movies/data/datasource/movies_remote_data_source.dart';
-import 'package:eventzone/movies/data/repository/movies_repository_impl.dart';
-import 'package:eventzone/movies/domain/repository/movies_repository.dart';
-import 'package:eventzone/movies/domain/usecases/get_all_popular_movies_usecase.dart';
-import 'package:eventzone/movies/domain/usecases/get_all_top_rated_movies_usecase.dart';
-import 'package:eventzone/movies/domain/usecases/get_movie_details_usecase.dart';
-import 'package:eventzone/movies/domain/usecases/get_movies_usecase.dart';
-import 'package:eventzone/movies/presentation/controllers/popular_movies_bloc/popular_movies_bloc.dart';
-import 'package:eventzone/movies/presentation/controllers/top_rated_movies_bloc/top_rated_movies_bloc.dart';
+import 'package:eventzone/events/data/datasource/events_remote_data_source.dart';
+import 'package:eventzone/events/data/repository/events_repository_impl.dart';
+import 'package:eventzone/events/domain/repository/events_repository.dart';
+import 'package:eventzone/events/domain/usecases/get_event_details_usecase.dart';
+import 'package:eventzone/events/presentation/controllers/event_details_bloc/event_details_bloc.dart';
+import 'package:eventzone/events/presentation/controllers/events_bloc/events_bloc.dart';
+import 'package:eventzone/events/presentation/controllers/popular_events_bloc/popular_events_bloc.dart';
+import 'package:eventzone/events/presentation/controllers/top_rated_events_bloc/top_rated_events_bloc.dart';
 import 'package:eventzone/search/data/datasource/search_remote_data_source.dart';
 import 'package:eventzone/search/data/repository/search_repository_impl.dart';
 import 'package:eventzone/search/domain/repository/search_repository.dart';
@@ -25,9 +23,6 @@ import 'package:eventzone/tv_shows/presentation/controllers/popular_tv_shows_blo
 import 'package:eventzone/tv_shows/presentation/controllers/top_rated_tv_shows_bloc/top_rated_tv_shows_bloc.dart';
 import 'package:eventzone/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
 import 'package:eventzone/tv_shows/presentation/controllers/tv_shows_bloc/tv_shows_bloc.dart';
-
-import 'package:eventzone/movies/presentation/controllers/movie_details_bloc/movie_details_bloc.dart';
-import 'package:eventzone/movies/presentation/controllers/movies_bloc/movies_bloc.dart';
 import 'package:eventzone/watchlist/data/datasource/watchlist_local_data_source.dart';
 import 'package:eventzone/watchlist/data/repository/watchlist_repository_impl.dart';
 import 'package:eventzone/watchlist/domain/repository/watchlist_repository.dart';
@@ -36,14 +31,15 @@ import 'package:eventzone/watchlist/domain/usecases/check_if_item_added_usecase.
 import 'package:eventzone/watchlist/domain/usecases/get_watchlist_items_usecase.dart';
 import 'package:eventzone/watchlist/domain/usecases/remove_watchlist_item_usecase.dart';
 import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
 
 class ServiceLocator {
   static void init() {
     // Data source
-    sl.registerLazySingleton<MoviesRemoteDataSource>(
-        () => MoviesRemoteDataSourceImpl());
+    sl.registerLazySingleton<EventsRemoteDataSource>(
+        () => EventsRemoteDataSourceImpl());
     sl.registerLazySingleton<TVShowsRemoteDataSource>(
         () => TVShowsRemoteDataSourceImpl());
     sl.registerLazySingleton<SearchRemoteDataSource>(
@@ -52,8 +48,8 @@ class ServiceLocator {
         () => WatchlistLocalDataSourceImpl());
 
     // Repository
-    sl.registerLazySingleton<MoviesRespository>(
-        () => MoviesRepositoryImpl(sl()));
+    sl.registerLazySingleton<EventsRespository>(
+        () => EventsRepositoryImpl(sl()));
     sl.registerLazySingleton<TVShowsRepository>(
         () => TVShowsRepositoryImpl(sl()));
     sl.registerLazySingleton<SearchRepository>(
@@ -62,10 +58,10 @@ class ServiceLocator {
         () => WatchListRepositoryImpl(sl()));
 
     // Use Cases
-    sl.registerLazySingleton(() => GetMoviesDetailsUseCase(sl()));
-    sl.registerLazySingleton(() => GetMoviesUseCase(sl()));
-    sl.registerLazySingleton(() => GetAllPopularMoviesUseCase(sl()));
-    sl.registerLazySingleton(() => GetAllTopRatedMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetEventsDetailsUseCase(sl()));
+    sl.registerLazySingleton(() => GetEventsUseCase(sl()));
+    sl.registerLazySingleton(() => GetAllPopularEventsUseCase(sl()));
+    sl.registerLazySingleton(() => GetAllTopRatedEventsUseCase(sl()));
     sl.registerLazySingleton(() => GetTVShowsUseCase(sl()));
     sl.registerLazySingleton(() => GetTVShowDetailsUseCase(sl()));
     sl.registerLazySingleton(() => GetSeasonDetailsUseCase(sl()));
@@ -78,10 +74,10 @@ class ServiceLocator {
     sl.registerLazySingleton(() => CheckIfItemAddedUseCase(sl()));
 
     // Bloc
-    sl.registerFactory(() => MoviesBloc(sl()));
-    sl.registerFactory(() => MovieDetailsBloc(sl()));
-    sl.registerFactory(() => PopularMoviesBloc(sl()));
-    sl.registerFactory(() => TopRatedMoviesBloc(sl()));
+    sl.registerFactory(() => EventsBloc(sl()));
+    sl.registerFactory(() => EventDetailsBloc(sl()));
+    sl.registerFactory(() => PopularEventsBloc(sl()));
+    sl.registerFactory(() => TopRatedEventsBloc(sl()));
     sl.registerFactory(() => TVShowsBloc(sl()));
     sl.registerFactory(() => TVShowDetailsBloc(sl(), sl()));
     sl.registerFactory(() => PopularTVShowsBloc(sl()));

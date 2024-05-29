@@ -10,7 +10,7 @@ class TVShowModel extends Media {
     required super.voteAverage,
     required super.releaseDate,
     required super.overview,
-    required super.isMovie,
+    required super.isEvent,
   });
 
   factory TVShowModel.fromJson(Map<String, dynamic> json) {
@@ -22,7 +22,7 @@ class TVShowModel extends Media {
       voteAverage: double.parse((json['vote_average']).toStringAsFixed(1)),
       releaseDate: getDate(json['first_air_date']),
       overview: json['overview'],
-      isMovie: false,
+      isEvent: false,
     );
   }
 }

@@ -1,8 +1,8 @@
 class AppStrings {
-  static const String appTitle = 'Movies App';
+  static const String appTitle = 'Events App';
   static const String seeAll = 'see all';
-  static const String popularMovies = 'Popular movies';
-  static const String topRatedMovies = 'Top rated movies';
+  static const String popularEvents = 'Popular events';
+  static const String topRatedEvents = 'Top rated events';
   static const String story = 'Story';
   static const String videos = 'Videos';
   static const String cast = 'Cast';
@@ -10,7 +10,7 @@ class AppStrings {
   static const String similar = 'Similar';
   static const String showLess = 'Show less';
   static const String showMore = 'Show more';
-  static const String movies = 'Movies';
+  static const String events = 'Events';
   static const String shows = 'Shows';
   static const String search = 'Search';
   static const String watchlist = 'Watchlist';
@@ -24,11 +24,11 @@ class AppStrings {
   static const String airDate = 'Air date:';
   static const String lastEpisode = 'Last Episode';
   static const String searchText =
-      'By typing in search bar, Movia search in movies and series and then show you the best results.';
-  static const String searchHint = 'Search for Movies, Series...';
+      'By typing in search bar, Movia search in events and series and then show you the best results.';
+  static const String searchHint = 'Search for Events, Series...';
   static const String watchlistIsEmpty = 'Watchlist is empty';
   static const String watchlistText =
-      'After adding movies and series to watchlist, they will appear here.';
+      'After adding events and series to watchlist, they will appear here.';
   static const String oops = 'Ooops';
   static const String tryAgainLater = 'Please try again later';
   static const String errorMessage = 'Something went wrong';
