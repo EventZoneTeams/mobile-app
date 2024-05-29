@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
+
+import 'package:eventzone/movies/domain/entities/cast.dart';
 import 'package:eventzone/core/resources/app_values.dart';
-import 'package:eventzone/movies/domain/entities/castrt';
 
 class CastCard extends StatelessWidget {
   final Cast cast;

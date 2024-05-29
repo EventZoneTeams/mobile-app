@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/presentation/components/custom_slider.dart';
 import 'package:eventzone/core/presentation/components/error_screen.dart';
+import 'package:eventzone/core/presentation/components/section_listview_card.dart';
 import 'package:eventzone/core/presentation/components/loading_indicator.dart';
 import 'package:eventzone/core/presentation/components/section_header.dart';
 import 'package:eventzone/core/presentation/components/section_listview.dart';
-import 'package:eventzone/core/presentation/components/section_listview_card
 import 'package:eventzone/core/presentation/components/slider_card.dart';
 import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/core/resources/app_strings.dart';

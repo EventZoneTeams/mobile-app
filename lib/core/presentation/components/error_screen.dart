@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:eventzone/core/presentation/components/error_text.dart';
+
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_values.dart';
-import 'package:flutter/material.dart';
-import 'package:eventzone/core/presentation/components/error_texts.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({

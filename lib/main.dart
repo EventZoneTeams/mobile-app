@@ -1,12 +1,12 @@
-import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/resources/app_router.dart';
+import 'package:eventzone/core/services/service_locator.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_theme.dart';
-import 'package:eventzone/core/services/service_locator';
+import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 
 void main() async {
   await Hive.initFlutter();

@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/utils/enums.dart';
 import 'package:eventzone/tv_shows/domain/usecases/get_all_popular_tv_shows_usecase.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'popular_tv_shows_event.dart';
 part 'popular_tv_shows_state.dart';

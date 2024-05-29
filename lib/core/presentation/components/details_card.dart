@@ -3,9 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/domain/entities/event_details.dart';
 import 'package:eventzone/core/presentation/components/slider_card_image.dart';
+import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_values.dart';
-import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc;
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailsCard extends StatelessWidget {

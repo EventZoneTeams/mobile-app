@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/movies/domain/usecases/get_all_popular_movies_usecase.dart';
+
 import 'package:eventzone/core/utils/enums.dart';
-import 'package:eventzone/movies/domain/usecases/get_all_popular_movies_usecasert';
 
 part 'popular_movies_event.dart';
 part 'popular_movies_state.dart';

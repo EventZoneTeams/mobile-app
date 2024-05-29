@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:eventzone/core/presentation/components/circle_dot.dart';
+
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/tv_shows/domain/entities/episode.dart';
 import 'package:eventzone/tv_shows/domain/entities/season.dart';
-import 'package:flutter/material.dart';
-import 'package:eventzone/core/presentation/components/circle_dot.dart';
 
 class TVShowCardDetails extends StatelessWidget {
   const TVShowCardDetails({

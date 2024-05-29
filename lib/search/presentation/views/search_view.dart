@@ -5,9 +5,10 @@ import 'package:eventzone/core/presentation/components/loading_indicator.dart';
 import 'package:eventzone/core/resources/app_values.dart';
 import 'package:eventzone/core/services/service_locator.dart';
 import 'package:eventzone/search/presentation/components/no_results.dart';
-import 'package:eventzone/search/presentation/components/search_field.dart';
 import 'package:eventzone/search/presentation/components/search_grid_view.dart';
-import 'package:eventzone/search/presentation/components/search_textimport 'package:eventzone/search/presentation/controllers/search_bloc/search_bloc.dart';
+import 'package:eventzone/search/presentation/components/search_text.dart';
+import 'package:eventzone/search/presentation/components/search_field.dart';
+import 'package:eventzone/search/presentation/controllers/search_bloc/search_bloc.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});

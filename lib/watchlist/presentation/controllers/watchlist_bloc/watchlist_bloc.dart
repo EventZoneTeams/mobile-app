@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/domain/usecase/base_use_case.dart';
@@ -7,7 +8,6 @@ import 'package:eventzone/watchlist/domain/usecases/add_watchlist_item_usecase.d
 import 'package:eventzone/watchlist/domain/usecases/check_if_item_added_usecase.dart';
 import 'package:eventzone/watchlist/domain/usecases/get_watchlist_items_usecase.dart';
 import 'package:eventzone/watchlist/domain/usecases/remove_watchlist_item_usecase.dart';
-import 'package:flutter_bloc/flutter_blocm_usecase.dart';
 
 part 'watchlist_event.dart';
 part 'watchlist_state.dart';

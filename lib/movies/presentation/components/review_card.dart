@@ -1,11 +1,12 @@
-import 'package:eventzone/movies/presentation/components/avatar.dart';
-import 'package:eventzone/movies/presentation/components/review_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:eventzone/core/utils/functions.dart';
+
+import 'package:eventzone/movies/domain/entities/review.dart';
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_values.dart';
-import 'package:eventzone/core/utils/functions.dart';
-import 'package:eventzone/movies/domain/entities/reviewt';
+import 'package:eventzone/movies/presentation/components/avatar.dart';
+import 'package:eventzone/movies/presentation/components/review_content.dart';
 
 class ReviewCard extends StatelessWidget {
   final Review review;

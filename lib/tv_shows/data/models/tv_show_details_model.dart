@@ -1,8 +1,9 @@
 import 'package:eventzone/core/domain/entities/event_details.dart';
 import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/tv_shows/data/models/tv_show_model.dart';
+
 import 'package:eventzone/tv_shows/data/models/episode_model.dart';
 import 'package:eventzone/tv_shows/data/models/season_model.dart';
-import 'package:eventzone/tv_shows/data/models/tv_showl.dart';
 
 // ignore: must_be_immutable
 class TVShowDetailsModel extends MediaDetails {

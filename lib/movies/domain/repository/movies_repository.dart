@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+
 import 'package:eventzone/core/data/error/failure.dart';
-import 'package:eventzone/core/domain/entities/event';
+import 'package:eventzone/core/domain/entities/event_details.dart';
 
 abstract class MoviesRespository {
   Future<Either<Failure, List<List<Media>>>> getMovies();

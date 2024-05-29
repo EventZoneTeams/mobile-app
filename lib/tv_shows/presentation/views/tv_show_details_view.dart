@@ -12,7 +12,9 @@ import 'package:eventzone/core/utils/enums.dart';
 import 'package:eventzone/core/utils/functions.dart';
 import 'package:eventzone/tv_shows/presentation/components/episode_card.dart';
 import 'package:eventzone/tv_shows/presentation/components/seasons_section.dart';
-import 'package:eventzone/tv_shows/presentation/components/tv_show_card_details.dart';kage:eventzone/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
+import 'package:eventzone/tv_shows/presentation/components/tv_show_card_details.dart';
+
+import 'package:eventzone/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
 
 class TVShowDetailsView extends StatelessWidget {
   const TVShowDetailsView({
