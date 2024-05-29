@@ -61,7 +61,7 @@ class Event extends Equatable {
 
   factory Event.fromEventDetails(EventDetails eventDetail) {
     return Event(
-      id: mediaDetails.tmdbID,
+      id: eventDetailid.,
       name: mediaDetails.title,
       description: mediaDetails.posterUrl,
       thumbnailUrl: mediaDetails.backdropUrl,
