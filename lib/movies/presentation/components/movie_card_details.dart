@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/domain/entities/media_details.dart';
+import 'package:movies_app/core/domain/entities/event_details.dart';
 import 'package:movies_app/core/presentation/components/circle_dot.dart';
 
 class MovieCardDetails extends StatelessWidget {

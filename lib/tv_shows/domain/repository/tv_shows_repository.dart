@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/core/data/error/failure.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
-import 'package:movies_app/core/domain/entities/media_details.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
+import 'package:movies_app/core/domain/entities/event_details.dart';
 import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
 import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/core/resources/app_router.dart';
 import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/resources/app_strings.dart';

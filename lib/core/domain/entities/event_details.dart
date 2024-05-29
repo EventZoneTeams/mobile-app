@@ -1,29 +1,30 @@
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
 import 'package:movies_app/tv_shows/domain/entities/episode.dart';
 import 'package:movies_app/tv_shows/domain/entities/season.dart';
 
 // ignore: must_be_immutable
-class MediaDetails extends Equatable {
-  int? id;
-  final int tmdbID;
-  final String title;
-  final String posterUrl;
-  final String backdropUrl;
-  final String releaseDate;
-  final Episode? lastEpisodeToAir;
-  final String genres;
-  final String? runtime;
-  final int? numberOfSeasons;
-  final String overview;
-  final double voteAverage;
-  final String voteCount;
-  final String trailerUrl;
-  final List<Cast>? cast;
-  final List<Review>? reviews;
-  final List<Season>? seasons;
+class EventDetails extends Equatable {
+  final int id
+  final String name ;
+  final String description;
+  final String donationStartDate;
+  final String donationEndDate;
+  final String eventStartDate;
+  final String eventEndDate;
+  final String location;
+  final int userId;
+  final int eventCategoryId;
+  final String university;
+  final String status;
+  final String origanizationStatus;
+  final bool isDonation;
+  final double totalCost;
+  final List<Post>? reviews;
+  // event
+  final List<Image>? seasons;
   final List<Media> similar;
   bool isAdded;
 

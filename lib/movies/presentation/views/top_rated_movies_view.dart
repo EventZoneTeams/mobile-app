@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/core/presentation/components/error_screen.dart';
 import 'package:movies_app/core/presentation/components/loading_indicator.dart';
 import 'package:movies_app/core/presentation/components/custom_app_bar.dart';

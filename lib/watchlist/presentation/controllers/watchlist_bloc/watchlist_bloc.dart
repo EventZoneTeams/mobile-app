@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/core/domain/usecase/base_use_case.dart';
 import 'package:movies_app/watchlist/domain/usecases/add_watchlist_item_usecase.dart';
 import 'package:movies_app/watchlist/domain/usecases/check_if_item_added_usecase.dart';

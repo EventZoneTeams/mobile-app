@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/core/presentation/components/slider_card_image.dart';
 import 'package:movies_app/core/utils/functions.dart';
 

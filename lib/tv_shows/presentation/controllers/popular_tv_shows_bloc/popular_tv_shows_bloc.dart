@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/tv_shows/domain/usecases/get_all_popular_tv_shows_usecase.dart';
 

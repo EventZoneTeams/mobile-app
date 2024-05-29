@@ -1,4 +1,4 @@
-import 'package:movies_app/core/domain/entities/media_details.dart';
+import 'package:movies_app/core/domain/entities/event_details.dart';
 import 'package:movies_app/core/utils/functions.dart';
 import 'package:movies_app/tv_shows/data/models/tv_show_model.dart';
 

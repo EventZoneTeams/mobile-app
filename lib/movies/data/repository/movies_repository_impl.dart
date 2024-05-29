@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/data/error/exceptions.dart';
 import 'package:movies_app/core/data/error/failure.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
-import 'package:movies_app/core/domain/entities/media_details.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
+import 'package:movies_app/core/domain/entities/event_details.dart';
 import 'package:movies_app/movies/domain/repository/movies_repository.dart';
 
 import 'package:movies_app/movies/data/datasource/movies_remote_data_source.dart';

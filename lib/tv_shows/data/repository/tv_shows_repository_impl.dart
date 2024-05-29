@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/core/domain/entities/media.dart';
-import 'package:movies_app/core/domain/entities/media_details.dart';
+import 'package:movies_app/core/domain/entities/event.dart';
+import 'package:movies_app/core/domain/entities/event_details.dart';
 import 'package:movies_app/tv_shows/data/datasource/tv_shows_remote_data_source.dart';
 import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
 import 'package:movies_app/core/data/error/failure.dart';
