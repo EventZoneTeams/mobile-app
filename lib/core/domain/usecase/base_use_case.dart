@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-
-import 'package:movies_app/core/data/error/failure.dart';
+import 'package:eventzone/core/data/error/failure.dart';
 
 abstract class BaseUseCase<T, P> {
   Future<Either<Failure, T>> call(P p);

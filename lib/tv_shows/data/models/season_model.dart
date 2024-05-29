@@ -1,5 +1,5 @@
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/tv_shows/domain/entities/season.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/tv_shows/domain/entities/season.dart';
 
 class SeasonModel extends Season {
   const SeasonModel({

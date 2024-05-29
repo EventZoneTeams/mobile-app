@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/search/presentation/controllers/search_bloc/search_bloc.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({

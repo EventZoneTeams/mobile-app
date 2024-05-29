@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
-import 'package:movies_app/movies/presentation/components/avatar.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/movies/domain/entities/review.dart';
+import 'package:eventzone/movies/presentation/components/avatar.dart';
 
 class ReviewContent extends StatelessWidget {
   const ReviewContent({

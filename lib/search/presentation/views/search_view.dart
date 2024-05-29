@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/presentation/components/error_text.dart';
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-import 'package:movies_app/search/presentation/components/no_results.dart';
-import 'package:movies_app/search/presentation/components/search_grid_view.dart';
-import 'package:movies_app/search/presentation/components/search_text.dart';
-import 'package:movies_app/search/presentation/components/search_field.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
+import 'package:eventzone/core/presentation/components/error_text.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/search/presentation/components/no_results.dart';
+import 'package:eventzone/search/presentation/components/search_field.dart';
+import 'package:eventzone/search/presentation/components/search_grid_view.dart';
+import 'package:eventzone/search/presentation/components/search_textimport 'package:eventzone/search/presentation/controllers/search_bloc/search_bloc.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});

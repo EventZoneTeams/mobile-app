@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/presentation/components/slider_card_image.dart';
-import 'package:movies_app/core/utils/functions.dart';
-
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_constants.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/presentation/components/slider_card_image.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_constants.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/utils/function';
 
 class SliderCard extends StatelessWidget {
   const SliderCard({

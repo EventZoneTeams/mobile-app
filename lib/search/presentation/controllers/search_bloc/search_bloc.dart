@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
-import 'package:movies_app/search/domain/usecases/search_usecase.dart';
+import 'package:eventzone/search/domain/entities/search_result_item.dart';
+import 'package:eventzone/search/domain/usecases/search_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'search_event.dart';

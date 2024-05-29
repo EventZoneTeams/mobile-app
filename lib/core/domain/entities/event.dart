@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
 
 part 'event.g.dart';
 

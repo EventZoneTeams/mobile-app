@@ -1,6 +1,5 @@
+import 'package:eventzone/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
-
-import 'package:movies_app/core/resources/app_values.dart';
 
 class VerticalListView extends StatefulWidget {
   final int itemCount;

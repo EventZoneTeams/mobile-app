@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movies_app/watchlist/data/models/watchlist_item_model.dart';
+import 'package:eventzone/watchlist/data/models/watchlist_item_model.dart';
 
 abstract class WatchlistLocalDataSource {
   Future<List<WatchlistItemModel>> getWatchListItems();

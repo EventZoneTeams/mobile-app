@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/core/data/network/api_constants.dart';
-import 'package:movies_app/core/data/network/error_message_model.dart';
-import 'package:movies_app/tv_shows/data/models/season_details_model.dart';
-import 'package:movies_app/tv_shows/data/models/tv_show_details_model.dart';
-import 'package:movies_app/tv_shows/data/models/tv_show_model.dart';
-import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
+import 'package:eventzone/core/data/error/exceptions.dart';
+import 'package:eventzone/core/data/network/api_constants.dart';
+import 'package:eventzone/core/data/network/error_message_model.dart';
+import 'package:eventzone/tv_shows/data/models/season_details_model.dart';
+import 'package:eventzone/tv_shows/data/models/tv_show_details_model.dart';
+import 'package:eventzone/tv_shows/data/models/tv_show_model.dart';
+import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
 abstract class TVShowsRemoteDataSource {
   Future<List<TVShowModel>> getOnAirTVShows();

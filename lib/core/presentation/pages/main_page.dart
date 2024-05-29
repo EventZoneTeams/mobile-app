@@ -1,10 +1,9 @@
+import 'package:eventzone/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/core/resources/app_router.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-
-import 'package:movies_app/core/resources/app_routes.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/resources/app_router.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
+import 'package:eventzone/core/resources/app_stringart';
 
 class MainPage extends StatefulWidget {
   const MainPage({

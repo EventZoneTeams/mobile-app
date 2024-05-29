@@ -1,5 +1,5 @@
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/tv_shows/domain/entities/episode.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/tv_shows/domain/entities/episode.dart';
 
 class EpisodeModel extends Episode {
   const EpisodeModel({

@@ -1,15 +1,15 @@
+import 'package:eventzone/core/presentation/components/section_title.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/core/data/network/api_constants.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/presentation/components/section_listview_card.dart';
-import 'package:movies_app/core/presentation/components/overview_section.dart';
-import 'package:movies_app/core/presentation/components/section_listview.dart';
-import 'package:movies_app/core/presentation/components/section_title.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_routes.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/data/network/api_constants.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/presentation/components/overview_section.dart';
+import 'package:eventzone/core/presentation/components/section_listview.dart';
+import 'package:eventzone/core/presentation/components/section_listview_card';
 
 String getDate(String? date) {
   if (date == null || date.isEmpty) {

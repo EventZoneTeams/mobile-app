@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_values.dart';
 
 class CircleDot extends StatelessWidget {
   const CircleDot({

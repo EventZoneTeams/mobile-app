@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/movies/data/models/movie_details_model.dart';
-
-import 'package:movies_app/core/data/network/api_constants.dart';
-import 'package:movies_app/core/data/network/error_message_model.dart';
-import 'package:movies_app/movies/data/models/movie_model.dart';
+import 'package:eventzone/movies/data/models/movie_model.dart';
+import 'package:eventzone/core/data/error/exceptions.dart';
+import 'package:eventzone/core/data/network/api_constants.dart';
+import 'package:eventzone/core/data/network/error_message_model.dart';
+import 'package:eventzone/movies/data/models/movie_detailsel.dart';
 
 abstract class MoviesRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();

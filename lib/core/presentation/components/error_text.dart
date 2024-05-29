@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
 
 class ErrorText extends StatelessWidget {
   const ErrorText({super.key});

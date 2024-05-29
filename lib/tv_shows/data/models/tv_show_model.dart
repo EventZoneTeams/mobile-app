@@ -1,5 +1,5 @@
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/utils/functions.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/utils/functions.dart';
 
 class TVShowModel extends Media {
   const TVShowModel({

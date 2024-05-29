@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/presentation/components/error_screen.dart';
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/presentation/components/custom_app_bar.dart';
-import 'package:movies_app/core/presentation/components/vertical_listview_card.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-
-import 'package:movies_app/core/presentation/components/vertical_listview.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/movies/presentation/controllers/top_rated_movies_bloc/top_rated_movies_bloc.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/presentation/components/custom_app_bar.dart';
+import 'package:eventzone/core/presentation/components/error_screen.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/presentation/components/vertical_listview.dart';
+import 'package:eventzone/core/presentation/components/vertical_listview_card.dart';
+import 'package:eventzone/core/resources/app_strings
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/movies/presentation/controllers/top_rated_movies_bloc/top_rated_movies_bloc.dart';
 
 class TopRatedMoviesView extends StatelessWidget {
   const TopRatedMoviesView({super.key});

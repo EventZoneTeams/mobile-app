@@ -1,5 +1,5 @@
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/search/domain/entities/search_result_item.dart';
 
 class SearchResultItemModel extends SearchResultItem {
   const SearchResultItemModel({

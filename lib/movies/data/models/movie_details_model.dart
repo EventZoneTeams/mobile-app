@@ -1,8 +1,8 @@
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/movies/data/models/movie_model.dart';
-import 'package:movies_app/movies/data/models/review_model.dart';
-import 'package:movies_app/movies/data/models/cast_model.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/movies/data/models/cast_model.dart';
+import 'package:eventzone/movies/data/models/movie_model.dart';
+import 'package:eventzone/movies/data/models/reviewl.dart';
 
 // ignore: must_be_immutable
 class MovieDetailsModel extends MediaDetails {

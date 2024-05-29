@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/core/data/network/api_constants.dart';
-import 'package:movies_app/core/data/network/error_message_model.dart';
-import 'package:movies_app/search/data/models/search_result_item_model.dart';
+import 'package:eventzone/core/data/error/exceptions.dart';
+import 'package:eventzone/core/data/network/api_constants.dart';
+import 'package:eventzone/core/data/network/error_message_model.dart';
+import 'package:eventzone/search/data/models/search_result_item_model.dart';
 
 abstract class SearchRemoteDataSource {
   Future<List<SearchResultItemModel>> search(String title);

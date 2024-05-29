@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/presentation/components/image_with_shimmer.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
+import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
 
 class SliderCardImage extends StatelessWidget {
   const SliderCardImage({

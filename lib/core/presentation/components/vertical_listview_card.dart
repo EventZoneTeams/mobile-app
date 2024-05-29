@@ -1,10 +1,9 @@
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/utils/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/presentation/components/image_with_shimmer.dart';
-
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/utils/functions.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
 
 class VerticalListViewCard extends StatelessWidget {
   const VerticalListViewCard({

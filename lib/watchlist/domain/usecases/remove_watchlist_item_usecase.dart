@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/data/error/failure.dart';
-import 'package:movies_app/core/domain/usecase/base_use_case.dart';
-import 'package:movies_app/watchlist/domain/repository/watchlist_repository.dart';
+import 'package:eventzone/core/data/error/failure.dart';
+import 'package:eventzone/core/domain/usecase/base_use_case.dart';
+import 'package:eventzone/watchlist/domain/repository/watchlist_repository.dart';
 
 class RemoveWatchlistItemUseCase extends BaseUseCase<Unit, int> {
   final WatchlistRepository _baseWatchListRepository;

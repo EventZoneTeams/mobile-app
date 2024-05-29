@@ -1,4 +1,4 @@
-import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
+import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
 class ApiConstants {
   static const String baseUrl = '1';

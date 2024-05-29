@@ -1,9 +1,9 @@
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/data/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/domain/usecase/base_use_case.dart';
-import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
-import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
+import 'package:equatable/equatable.dart';
+import 'package:eventzone/core/domain/usecase/base_use_case.dart';
+import 'package:eventzone/tv_shows/domain/entities/season_details.dart';
+import 'package:eventzone/tv_shows/domain/repository/tv_shows_repository.dart';
+import 'package:eventzone/core/data/error/failuredart';
 
 class GetSeasonDetailsUseCase
     extends BaseUseCase<SeasonDetails, SeasonDetailsParams> {

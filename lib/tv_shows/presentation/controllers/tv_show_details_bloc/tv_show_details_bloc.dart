@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
-import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
-import 'package:movies_app/tv_shows/domain/usecases/get_tv_show_details_usecase.dart';
-part 'tv_show_details_event.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/tv_shows/domain/entities/season_details.dart';
+import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
+import 'package:eventzone/tv_shows/domain/usecases/get_tv_show_details_usecase.dart';
+t 'tv_show_details_event.dart';
 part 'tv_show_details_state.dart';
 
 class TVShowDetailsBloc extends Bloc<TVShowDetailsEvent, TVShowDetailsState> {

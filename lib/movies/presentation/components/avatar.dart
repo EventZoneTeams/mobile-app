@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_values.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Avatar extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:movies_app/core/data/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/core/domain/usecase/base_use_case.dart';
-import 'package:movies_app/movies/domain/repository/movies_repository.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/domain/usecase/base_use_case.dart';
+import 'package:eventzone/movies/domain/repository/movies_repository.dart';
+import 'package:eventzone/core/data/error/failuredart';
 
 class GetMoviesDetailsUseCase extends BaseUseCase<MediaDetails, int> {
   final MoviesRespository _baseMoviesRespository;

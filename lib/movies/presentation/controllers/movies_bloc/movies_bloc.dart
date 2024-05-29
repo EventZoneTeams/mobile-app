@@ -1,12 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/domain/usecase/base_use_case.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_usecase.dart';
-
-import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_event.dart';
-import 'package:movies_app/movies/presentation/controllers/movies_bloc/movies_state.dart';
+import 'package:eventzone/core/domain/usecase/base_use_case.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/movies/domain/usecases/get_movies_usecase.dart';port 'package:eventzone/movies/presentation/controllers/movies_bloc/movies_event.dart';
+import 'package:eventzone/movies/presentation/controllers/movies_bloc/movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final GetMoviesUseCase _getMoviesUseCase;

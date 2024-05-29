@@ -1,6 +1,5 @@
+import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import 'package:movies_app/core/resources/app_colors.dart';
 
 class LoadingIndicator extends StatelessWidget {
   const LoadingIndicator({

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/tv_shows/domain/entities/episode.dart';
+import 'package:eventzone/tv_shows/domain/entities/episode.dart';
 
 class SeasonDetails extends Equatable {
   const SeasonDetails({

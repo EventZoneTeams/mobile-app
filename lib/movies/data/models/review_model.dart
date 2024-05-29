@@ -1,5 +1,5 @@
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/movies/domain/entities/review.dart';
 
 class ReviewModel extends Review {
   const ReviewModel({

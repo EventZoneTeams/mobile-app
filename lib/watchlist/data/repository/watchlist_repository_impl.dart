@@ -1,10 +1,10 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/watchlist/data/datasource/watchlist_local_data_source.dart';
-import 'package:movies_app/watchlist/data/models/watchlist_item_model.dart';
-import 'package:movies_app/core/data/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/watchlist/domain/repository/watchlist_repository.dart';
+import 'package:eventzone/watchlist/domain/repository/watchlist_repository.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:eventzone/core/data/error/failure.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/watchlist/data/datasource/watchlist_local_data_source.dart';
+import 'package:eventzone/watchlist/data/models/watchlist_item_modelt';
 
 class WatchListRepositoryImpl extends WatchlistRepository {
   final WatchlistLocalDataSource _baseWatchlistLocalDataSource;

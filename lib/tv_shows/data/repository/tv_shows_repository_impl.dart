@@ -1,13 +1,13 @@
-import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/tv_shows/data/datasource/tv_shows_remote_data_source.dart';
-import 'package:movies_app/tv_shows/domain/entities/season_details.dart';
-import 'package:movies_app/core/data/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/tv_shows/domain/repository/tv_shows_repository.dart';
-import 'package:movies_app/tv_shows/domain/usecases/get_season_details_usecase.dart';
+import 'package:dio/dio.dart';
+import 'package:eventzone/core/data/error/exceptions.dart';
+import 'package:eventzone/core/data/error/failure.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/tv_shows/data/datasource/tv_shows_remote_data_source.dart';
+import 'package:eventzone/tv_shows/domain/entities/season_details;
+import 'package:eventzone/tv_shows/domain/repository/tv_shows_repository.dart';
+import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
 
 class TVShowsRepositoryImpl extends TVShowsRepository {
   final TVShowsRemoteDataSource _baseTVShowsRemoteDataSource;

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/presentation/components/error_text.dart';
-import 'package:movies_app/core/presentation/components/image_with_shimmer.dart';
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/resources/app_colors.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/tv_shows/domain/entities/season.dart';
-import 'package:movies_app/tv_shows/presentation/components/episodes_widget.dart';
-import 'package:movies_app/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
+import 'package:eventzone/core/presentation/components/error_text.dart';
+import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/resources/app_colors.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/tv_shows/domain/entities/season.dart';
+import 'package:eventzone/tv_shows/presentation/components/episodes_widget.dart';
+import 'package:eventzone/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
 
 class SeasonCard extends StatelessWidget {
   const SeasonCard({

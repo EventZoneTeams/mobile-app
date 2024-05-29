@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/core/domain/entities/event.dart';
-import 'package:movies_app/core/presentation/components/custom_slider.dart';
-import 'package:movies_app/core/presentation/components/error_screen.dart';
-import 'package:movies_app/core/presentation/components/section_listview_card.dart';
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/presentation/components/section_header.dart';
-import 'package:movies_app/core/presentation/components/section_listview.dart';
-import 'package:movies_app/core/presentation/components/slider_card.dart';
-import 'package:movies_app/core/resources/app_routes.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/tv_shows/presentation/controllers/tv_shows_bloc/tv_shows_bloc.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
+import 'package:eventzone/core/presentation/components/custom_slider.dart';
+import 'package:eventzone/core/presentation/components/error_screen.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/presentation/components/section_header.dart';
+import 'package:eventzone/core/presentation/components/section_listview.dart';
+import 'package:eventzone/core/presentation/components/section_listview_card
+import 'package:eventzone/core/presentation/components/slider_card.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/tv_shows/presentation/controllers/tv_shows_bloc/tv_shows_bloc.dart';
 
 class TVShowsView extends StatelessWidget {
   const TVShowsView({super.key});

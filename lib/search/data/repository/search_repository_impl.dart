@@ -1,10 +1,10 @@
-import 'package:dio/dio.dart';
-import 'package:movies_app/core/data/error/exceptions.dart';
-import 'package:movies_app/search/data/datasource/search_remote_data_source.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
-import 'package:movies_app/core/data/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/search/domain/repository/search_repository.dart';
+import 'package:dio/dio.dart';
+import 'package:eventzone/search/domain/repository/search_repository.dart';
+import 'package:eventzone/core/data/error/exceptions.dart';
+import 'package:eventzone/core/data/error/failure.dart';
+import 'package:eventzone/search/data/datasource/search_remote_data_source.dart';
+import 'package:eventzone/search/domain/entities/search_result_itemt';
 
 class SearchRepositoryImpl extends SearchRepository {
   final SearchRemoteDataSource _baseSearchRemoteDataSource;

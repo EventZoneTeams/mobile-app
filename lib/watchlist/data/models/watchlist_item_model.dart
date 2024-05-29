@@ -1,4 +1,4 @@
-import 'package:movies_app/core/domain/entities/event.dart';
+import 'package:eventzone/core/domain/entities/event.dart';
 
 class WatchlistItemModel extends Media {
   const WatchlistItemModel({

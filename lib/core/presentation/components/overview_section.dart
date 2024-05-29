@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
-
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:readmore/readmoreart';
 
 class OverviewSection extends StatelessWidget {
   final String overview;

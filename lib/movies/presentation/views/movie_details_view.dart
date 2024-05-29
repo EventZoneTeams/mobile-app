@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/core/presentation/components/error_screen.dart';
-import 'package:movies_app/core/presentation/components/section_listview.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/movies/domain/entities/cast.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
-import 'package:movies_app/movies/presentation/components/cast_card.dart';
-import 'package:movies_app/movies/presentation/components/movie_card_details.dart';
-import 'package:movies_app/movies/presentation/components/review_card.dart';
-import 'package:movies_app/movies/presentation/controllers/movie_details_bloc/movie_details_bloc.dart';
-
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/presentation/components/details_card.dart';
-import 'package:movies_app/core/presentation/components/section_title.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-
-class MovieDetailsView extends StatelessWidget {
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/presentation/components/details_card.dart';
+import 'package:eventzone/core/presentation/components/error_screen.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/presentation/components/section_listview.dart';
+import 'package:eventzone/core/presentation/components/section_title.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/movies/domain/entities/cast.dart';
+import 'package:eventzone/movies/domain/entities/review.dart';
+import 'package:eventzone/movies/presentation/components/cast_card.dart';
+import 'package:eventzone/movies/presentation/components/movie_card_details.dart';
+import 'package:eventzone/movies/presentation/components/review_card.dart';
+import 'package:eventzone/movies/presentation/controllers/movie_details_bloc/movie_details_blocMovieDetailsView extends StatelessWidget {
   final int movieId;
 
   const MovieDetailsView({

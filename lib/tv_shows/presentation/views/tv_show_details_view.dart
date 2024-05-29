@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/domain/entities/event_details.dart';
-import 'package:movies_app/core/presentation/components/details_card.dart';
-import 'package:movies_app/core/presentation/components/error_screen.dart';
-import 'package:movies_app/core/presentation/components/loading_indicator.dart';
-import 'package:movies_app/core/presentation/components/section_title.dart';
-import 'package:movies_app/core/resources/app_strings.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/core/services/service_locator.dart';
-import 'package:movies_app/core/utils/enums.dart';
-import 'package:movies_app/core/utils/functions.dart';
-import 'package:movies_app/tv_shows/presentation/components/episode_card.dart';
-import 'package:movies_app/tv_shows/presentation/components/seasons_section.dart';
-import 'package:movies_app/tv_shows/presentation/components/tv_show_card_details.dart';
-
-import 'package:movies_app/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
+import 'package:eventzone/core/domain/entities/event_details.dart';
+import 'package:eventzone/core/presentation/components/details_card.dart';
+import 'package:eventzone/core/presentation/components/error_screen.dart';
+import 'package:eventzone/core/presentation/components/loading_indicator.dart';
+import 'package:eventzone/core/presentation/components/section_title.dart';
+import 'package:eventzone/core/resources/app_strings.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/core/services/service_locator.dart';
+import 'package:eventzone/core/utils/enums.dart';
+import 'package:eventzone/core/utils/functions.dart';
+import 'package:eventzone/tv_shows/presentation/components/episode_card.dart';
+import 'package:eventzone/tv_shows/presentation/components/seasons_section.dart';
+import 'package:eventzone/tv_shows/presentation/components/tv_show_card_details.dart';kage:eventzone/tv_shows/presentation/controllers/tv_show_details_bloc/tv_show_details_bloc.dart';
 
 class TVShowDetailsView extends StatelessWidget {
   const TVShowDetailsView({

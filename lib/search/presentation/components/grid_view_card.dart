@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_app/core/presentation/components/image_with_shimmer.dart';
-import 'package:movies_app/core/resources/app_routes.dart';
-import 'package:movies_app/core/resources/app_values.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
+import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
+import 'package:eventzone/core/resources/app_routes.dart';
+import 'package:eventzone/core/resources/app_values.dart';
+import 'package:eventzone/search/domain/entities/search_result_item.dart';
 
 class GridViewCard extends StatelessWidget {
   const GridViewCard({

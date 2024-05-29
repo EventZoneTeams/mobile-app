@@ -1,4 +1,4 @@
-package com.example.movies_app
+package com.example.eventzone
 
 import io.flutter.embedding.android.FlutterActivity
 
