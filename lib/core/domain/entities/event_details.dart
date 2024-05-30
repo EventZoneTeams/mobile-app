@@ -1,15 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:eventzone/core/domain/entities/event.dart';
-import 'package:eventzone/movies/domain/entities/cast.dart';
-import 'package:eventzone/movies/domain/entities/review.dart';
-import 'package:eventzone/tv_shows/domain/entities/episode.dart';
-import 'package:eventzone/tv_shows/domain/entities/season.dart';
+import 'package:eventzone/core/domain/entities/user.dart';
 
 // ignore: must_be_immutable
-class EventDetails extends Equatable {
+class EventDetail extends Equatable {
   final int id;
   final String name;
   final String description;
+  final String thumbnailUrl;
   final String donationStartDate;
   final String donationEndDate;
   final String eventStartDate;
@@ -21,48 +18,73 @@ class EventDetails extends Equatable {
   final String status;
   final String organizationStatus;
   final bool isDonation;
-  final double totalCost;
-  final List<Post>? post;
-  final List<Image>? eventImage;
-  final List<EventProduct>? similar;
-  bool isAdded;
+  double totalCost;
+  // final List<Post>? posts;
+  // final List<Image>? eventImages;
+  // final List<EventProduct>? eventProducts;
+  // final List<EventOrder>? eventOrders;
+  // final List<EventComment>? eventComments;
+  final User user;
+  // final List<EventFeedback>? eventFeedbacks;
+  final bool isAdded;
+  // final EventCategory eventCategory;
 
-  EventDetails({
-    this.id,
-    required this.tmdbID,
-    required this.title,
-    required this.posterUrl,
-    required this.backdropUrl,
-    required this.releaseDate,
-    this.lastEpisodeToAir,
-    required this.genres,
-    this.runtime,
-    this.numberOfSeasons,
-    required this.overview,
-    required this.voteAverage,
-    required this.voteCount,
-    required this.trailerUrl,
-    this.cast,
-    this.reviews,
-    this.seasons,
-    required this.similar,
-    this.isAdded = false,
+  EventDetail({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.thumbnailUrl,
+    required this.donationStartDate,
+    required this.donationEndDate,
+    required this.eventStartDate,
+    required this.eventEndDate,
+    required this.location,
+    required this.userId,
+    required this.eventCategoryId,
+    required this.university,
+    required this.status,
+    required this.organizationStatus,
+    required this.isDonation,
+    this.totalCost = 0,
+    // this.posts,
+    // this.eventImages,
+    // this.eventProducts,
+    // this.eventOrders,
+    // this.eventComments,
+    required this.user,
+    // this.eventFeedbacks,
+    required this.isAdded,
+    // required this.eventCategory,
   });
 
   @override
   List<Object?> get props => [
-        id,
-        tmdbID,
-        title,
-        posterUrl,
-        backdropUrl,
-        releaseDate,
-        genres,
-        overview,
-        voteAverage,
-        voteCount,
-        trailerUrl,
-        similar,
-        isAdded,
+    id,
+    name,
+    description,
+    thumbnailUrl,
+    donationStartDate,
+    donationEndDate,
+    eventStartDate,
+    eventEndDate,
+    location,
+    userId,
+    eventCategoryId,
+    university,
+    status,
+    organizationStatus,
+    isDonation,
+    totalCost = 0,
+    // posts,
+    // eventImages,
+    // eventProducts,
+    // eventOrders,
+    // eventComments,
+    user,
+    // eventFeedbacks,
+    isAdded,
+    // eventCategory,
       ];
+
+
 }

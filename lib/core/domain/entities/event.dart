@@ -2,8 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:eventzone/core/domain/entities/event_details.dart';
 
-part 'event.g.dart';
-
 @HiveType(typeId: 1)
 class Event extends Equatable {
   @HiveField(0)
@@ -27,7 +25,7 @@ class Event extends Equatable {
   @HiveField(9)
   final int userId;
   @HiveField(10)
-  final int eventCategory;
+  final int eventCategoryId;
   @HiveField(11)
   final String university;
   @HiveField(12)
@@ -39,56 +37,62 @@ class Event extends Equatable {
   @HiveField(15)
   double totalCost;
 
+  Event(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.thumbnailUrl,
+      required this.donationStartDate,
+      required this.donationEndDate,
+      required this.eventStartDate,
+      required this.eventEndDate,
+      required this.location,
+      required this.userId,
+      required this.eventCategoryId,
+      required this.university,
+      required this.status,
+      required this.organizationStatus,
+      required this.isDonation,
+      this.totalCost = 0});
 
-  Event({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.thumbnailUrl,
-    required this.donationStartDate,
-    required this.donationEndDate,
-    required this.eventStartDate,
-    required this.eventEndDate,
-    required this.location,
-    required this.userId,
-    required this.eventCategory,
-    required this.university,
-    required this.status,
-    required this.organizationStatus,
-    required this.isDonation,
-    this.totalCost = 0
-  });
-
-  factory Event.fromEventDetails(EventDetails eventDetail) {
+  factory Event.fromEventDetails(EventDetail eventDetail) {
     return Event(
-      id: eventDetailid.,
-      name: mediaDetails.title,
-      description: mediaDetails.posterUrl,
-      thumbnailUrl: mediaDetails.backdropUrl,
-      donationStartDate: mediaDetails.voteAverage,
-      donationEndDate: mediaDetails.releaseDate,
-      eventStartDate: mediaDetails.overview,
-      eventEndDate: mediaDetails.lastEpisodeToAir == null,
-      location: mediaDetails.lastEpisodeToAir == null,
-      userId: mediaDetails.lastEpisodeToAir == null,
-      eventCategory: mediaDetails.lastEpisodeToAir == null,
-      university: mediaDetails.lastEpisodeToAir == null,
-      status: mediaDetails.lastEpisodeToAir == null,
-      organizationStatus: mediaDetails.lastEpisodeToAir == null,
-      isDonation: mediaDetails.lastEpisodeToAir == null,
-      totalCost: mediaDetails.lastEpisodeToAir == null,
+      id: eventDetail.id,
+      name: eventDetail.name,
+      description: eventDetail.description,
+      thumbnailUrl: eventDetail.thumbnailUrl,
+      donationStartDate: eventDetail.donationStartDate,
+      donationEndDate: eventDetail.donationEndDate,
+      eventStartDate: eventDetail.eventStartDate,
+      eventEndDate: eventDetail.eventEndDate,
+      location: eventDetail.location,
+      userId: eventDetail.userId,
+      eventCategoryId: eventDetail.eventCategoryId,
+      university: eventDetail.university,
+      status: eventDetail.status,
+      organizationStatus: eventDetail.organizationStatus,
+      isDonation: eventDetail.isDonation,
+      totalCost: eventDetail.totalCost,
     );
   }
 
   @override
   List<Object?> get props => [
-        tmdbID,
-        title,
-        posterUrl,
-        backdropUrl,
-        voteAverage,
-        releaseDate,
-        overview,
-        isMovie,
+        id,
+        name,
+        description,
+        thumbnailUrl,
+        donationStartDate,
+        donationEndDate,
+        eventStartDate,
+        eventEndDate,
+        location,
+        userId,
+        eventCategoryId,
+        university,
+        status,
+        organizationStatus,
+        isDonation,
+        totalCost
       ];
 }

@@ -22,44 +22,11 @@ class ApiConstants {
   // static const String eventFeedback = '$baseUrl/event-products';
 
   // movies paths
-  static String userLogin(String uid)
-  {
-    return  '$user/$uid';
+  static String userLogin(String uid) {
+    return '$user/$uid';
   }
 
-  static String userRegister(String )
-
-  static const String topRatedMoviesPath =
-
-  static String getMovieDetailsPath(int movieId) {
-  }
-
-  static String getAllPopularMoviesPath(int page) {
-  }
-
-  static String getAllTopRatedMoviesPath(int page) {
-  }
-
-  // tv shows paths
-  static const String onAirTvShowsPath =
-
-  static const String popularTvShowsPath =
-
-  static const String topRatedTvShowsPath =
-
-  static String getTvShowDetailsPath(int tvShowId) {
-  }
-
-  static String getSeasonDetailsPath(SeasonDetailsParams params) {
-  }
-
-  static String getAllPopularTvShowsPath(int page) {
-  }
-
-  static String getAllTopRatedTvShowsPath(int page) {
-  }
-
-  // search paths
-  static String getSearchPath(String title) {
+  static String userRegister() {
+    return '$user/register';
   }
 }
