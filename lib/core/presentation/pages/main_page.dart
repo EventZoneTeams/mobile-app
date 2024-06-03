@@ -71,7 +71,7 @@ class _MainPageState extends State<MainPage> {
 
   int _getSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith(moviesPath)) {
+    if (location.startsWith(ev)) {
       return 0;
     }
     if (location.startsWith(tvShowsPath)) {

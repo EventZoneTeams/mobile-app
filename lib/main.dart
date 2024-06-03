@@ -9,10 +9,10 @@ import 'package:eventzone/core/resources/app_theme.dart';
 import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 
 void main() async {
-  await Hive.initFlutter();
-  Hive.registerAdapter(MediaAdapter());
-  await Hive.openBox('items');
-  ServiceLocator.init();
+  // await Hive.initFlutter();
+  // Hive.registerAdapter(MediaAdapter());
+  // await Hive.openBox('items');
+  // ServiceLocator.init();
 
   runApp(
     BlocProvider(

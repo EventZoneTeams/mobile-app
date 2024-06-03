@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/presentation/components/slider_card_image.dart';
-import 'package:eventzone/core/utils/functions.dart';
+// import 'package:eventzone/core/utils/functions.dart';
 
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_constants.dart';
@@ -10,11 +10,11 @@ import 'package:eventzone/core/resources/app_values.dart';
 class SliderCard extends StatelessWidget {
   const SliderCard({
     super.key,
-    required this.media,
+    required this.event,
     required this.itemIndex,
   });
 
-  final Media media;
+  final Event event;
   final int itemIndex;
 
   @override
@@ -23,12 +23,12 @@ class SliderCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
-        navigateToDetailsView(context, media);
+        // navigateToDetailsView(context, media);
       },
       child: SafeArea(
         child: Stack(
           children: [
-            SliderCardImage(imageUrl: media.backdropUrl),
+            SliderCardImage(imageUrl: event.thumbnailUrl),
             Padding(
               padding: const EdgeInsets.only(
                 right: AppPadding.p16,
@@ -42,12 +42,12 @@ class SliderCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      media.title,
+                      event.name,
                       maxLines: 2,
                       style: textTheme.titleMedium,
                     ),
                     Text(
-                      media.releaseDate,
+                      '${event.eventStartDate} - ${event.eventEndDate}',
                       style: textTheme.bodyLarge,
                     ),
                     Padding(

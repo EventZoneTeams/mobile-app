@@ -15,7 +15,7 @@ class EventDetail extends Equatable {
   final int userId;
   final int eventCategoryId;
   final String university;
-  final String status;
+  // final String status;
   final String organizationStatus;
   final bool isDonation;
   double totalCost;
@@ -24,9 +24,9 @@ class EventDetail extends Equatable {
   // final List<EventProduct>? eventProducts;
   // final List<EventOrder>? eventOrders;
   // final List<EventComment>? eventComments;
-  final User user;
+  // final User user;
   // final List<EventFeedback>? eventFeedbacks;
-  final bool isAdded;
+  // final bool isAdded;
   // final EventCategory eventCategory;
 
   EventDetail({
@@ -42,18 +42,18 @@ class EventDetail extends Equatable {
     required this.userId,
     required this.eventCategoryId,
     required this.university,
-    required this.status,
+    // required this.status,
     required this.organizationStatus,
     required this.isDonation,
-    this.totalCost = 0,
+    required this.totalCost,
     // this.posts,
     // this.eventImages,
     // this.eventProducts,
     // this.eventOrders,
     // this.eventComments,
-    required this.user,
+    // required this.user,
     // this.eventFeedbacks,
-    required this.isAdded,
+    // required this.isAdded,
     // required this.eventCategory,
   });
 
@@ -71,18 +71,18 @@ class EventDetail extends Equatable {
     userId,
     eventCategoryId,
     university,
-    status,
+    // status,
     organizationStatus,
     isDonation,
-    totalCost = 0,
+    totalCost,
     // posts,
     // eventImages,
     // eventProducts,
     // eventOrders,
     // eventComments,
-    user,
+    // user,
     // eventFeedbacks,
-    isAdded,
+    // isAdded,
     // eventCategory,
       ];
 

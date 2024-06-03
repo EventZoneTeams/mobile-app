@@ -4,13 +4,13 @@ import 'package:eventzone/core/presentation/components/image_with_shimmer.dart';
 
 import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/core/resources/app_values.dart';
-import 'package:eventzone/core/utils/functions.dart';
+// import 'package:eventzone/core/utils/functions.dart';
 
 class SectionListViewCard extends StatelessWidget {
-  final Media media;
+  final Event event;
 
   const SectionListViewCard({
-    required this.media,
+    required this.event,
     super.key,
   });
 
@@ -24,12 +24,12 @@ class SectionListViewCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              navigateToDetailsView(context, media);
+              // navigateToDetailsView(context, event);
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(AppSize.s8),
               child: ImageWithShimmer(
-                imageUrl: media.posterUrl,
+                imageUrl: event.thumbnailUrl,
                 width: double.infinity,
                 height: AppSize.s175,
               ),
@@ -39,7 +39,7 @@ class SectionListViewCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                media.title,
+                event.name,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: textTheme.bodyMedium,
@@ -52,7 +52,7 @@ class SectionListViewCard extends StatelessWidget {
                     size: AppSize.s18,
                   ),
                   Text(
-                    '${media.voteAverage}/10',
+                    '10/10',
                     style: textTheme.bodySmall,
                   ),
                 ],

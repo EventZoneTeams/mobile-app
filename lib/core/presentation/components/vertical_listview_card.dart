@@ -9,17 +9,17 @@ import 'package:eventzone/core/utils/functions.dart';
 class VerticalListViewCard extends StatelessWidget {
   const VerticalListViewCard({
     super.key,
-    required this.media,
+    required this.event,
   });
 
-  final Media media;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {
-        navigateToDetailsView(context, media);
+        // navigateToDetailsView(context, media);
       },
       child: Container(
         height: AppSize.s175,
@@ -35,7 +35,7 @@ class VerticalListViewCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(AppSize.s8),
                 child: ImageWithShimmer(
-                  imageUrl: media.posterUrl,
+                  imageUrl: event.thumbnailUrl,
                   width: AppSize.s110,
                   height: double.infinity,
                 ),
@@ -49,7 +49,7 @@ class VerticalListViewCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: AppPadding.p6),
                     child: Text(
-                      media.title,
+                      event.name,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.titleSmall,
@@ -57,23 +57,23 @@ class VerticalListViewCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      if (media.releaseDate.isNotEmpty) ...[
-                        Padding(
-                          padding: const EdgeInsets.only(right: AppPadding.p12),
-                          child: Text(
-                            media.releaseDate.split(', ')[1],
-                            textAlign: TextAlign.center,
-                            style: textTheme.bodyLarge,
-                          ),
-                        ),
-                      ],
+                      // if (media.releaseDate.isNotEmpty) ...[
+                      //   Padding(
+                      //     padding: const EdgeInsets.only(right: AppPadding.p12),
+                      //     child: Text(
+                      //       media.releaseDate.split(', ')[1],
+                      //       textAlign: TextAlign.center,
+                      //       style: textTheme.bodyLarge,
+                      //     ),
+                      //   ),
+                      // ],
                       const Icon(
                         Icons.star_rate_rounded,
                         color: AppColors.ratingIconColor,
                         size: AppSize.s18,
                       ),
                       Text(
-                        media.voteAverage.toString(),
+                        '10/10',
                         style: textTheme.bodyLarge,
                       ),
                     ],
@@ -81,7 +81,7 @@ class VerticalListViewCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: AppPadding.p14),
                     child: Text(
-                      media.overview,
+                      event.description,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.bodyLarge,

@@ -67,29 +67,29 @@ String getDate(String? date) {
   return '$month $day, $year';
 }
 
-String getPosterUrl(String? path) {
-  if (path != null) {
-    return ApiConstants.basePosterUrl + path;
-  } else {
-    return ApiConstants.moviePlaceHolder;
-  }
-}
-
-String getBackdropUrl(String? path) {
-  if (path != null) {
-    return ApiConstants.baseBackdropUrl + path;
-  } else {
-    return ApiConstants.moviePlaceHolder;
-  }
-}
-
-String getStillUrl(String? path) {
-  if (path != null) {
-    return ApiConstants.baseStillUrl + path;
-  } else {
-    return ApiConstants.stillPlaceHolder;
-  }
-}
+// String getPosterUrl(String? path) {
+//   if (path != null) {
+//     return ApiConstants.basePosterUrl + path;
+//   } else {
+//     return ApiConstants.moviePlaceHolder;
+//   }
+// }
+//
+// String getBackdropUrl(String? path) {
+//   if (path != null) {
+//     return ApiConstants.baseBackdropUrl + path;
+//   } else {
+//     return ApiConstants.moviePlaceHolder;
+//   }
+// }
+//
+// String getStillUrl(String? path) {
+//   if (path != null) {
+//     return ApiConstants.baseStillUrl + path;
+//   } else {
+//     return ApiConstants.stillPlaceHolder;
+//   }
+// }
 
 String getLength(int? runtime) {
   if (runtime == null || runtime == 0) {
@@ -111,13 +111,13 @@ String getVotesCount(int voteCount) {
   return '(${voteCount ~/ 1000}k)';
 }
 
-String getProfileImageUrl(Map<String, dynamic> json) {
-  if (json['profile_path'] != null) {
-    return ApiConstants.baseProfileUrl + json['profile_path'];
-  } else {
-    return ApiConstants.castPlaceHolder;
-  }
-}
+// String getProfileImageUrl(Map<String, dynamic> json) {
+//   if (json['profile_path'] != null) {
+//     return ApiConstants.baseProfileUrl + json['profile_path'];
+//   } else {
+//     return ApiConstants.castPlaceHolder;
+//   }
+// }
 
 String getElapsedTime(String date) {
   DateTime reviewDate = DateTime.parse(date);
@@ -154,65 +154,65 @@ String getGenres(List<dynamic> genres) {
   }
 }
 
-String getAvatarUrl(String? path) {
-  if (path != null) {
-    if (path.startsWith('/https://www.gravatar.com/avatar')) {
-      return path.substring(1);
-    } else {
-      return ApiConstants.baseAvatarUrl + path;
-    }
-  } else {
-    return ApiConstants.avatarPlaceHolder;
-  }
-}
+// String getAvatarUrl(String? path) {
+//   if (path != null) {
+//     if (path.startsWith('/https://www.gravatar.com/avatar')) {
+//       return path.substring(1);
+//     } else {
+//       return ApiConstants.baseAvatarUrl + path;
+//     }
+//   } else {
+//     return ApiConstants.avatarPlaceHolder;
+//   }
+// }
 
-String getTrailerUrl(Map<String, dynamic> json) {
-  List videos = json['videos']['results'];
-  if (videos.isNotEmpty) {
-    List trailers = videos.where((e) => e['type'] == 'Trailer').toList();
-    if (trailers.isNotEmpty) {
-      return ApiConstants.baseVideoUrl + trailers.last['key'];
-    } else {
-      return '';
-    }
-  } else {
-    return '';
-  }
-}
+// String getTrailerUrl(Map<String, dynamic> json) {
+//   List videos = json['videos']['results'];
+//   if (videos.isNotEmpty) {
+//     List trailers = videos.where((e) => e['type'] == 'Trailer').toList();
+//     if (trailers.isNotEmpty) {
+//       return ApiConstants.baseVideoUrl + trailers.last['key'];
+//     } else {
+//       return '';
+//     }
+//   } else {
+//     return '';
+//   }
+// }
 
-void navigateToDetailsView(BuildContext context, Media media) {
-  if (media.isMovie) {
-    context.pushNamed(
-      AppRoutes.movieDetailsRoute,
-      params: {'movieId': media.tmdbID.toString()},
-    );
-  } else {
-    context.pushNamed(
-      AppRoutes.tvShowDetailsRoute,
-      params: {'tvShowId': media.tmdbID.toString()},
-    );
-  }
-}
+// void navigateToDetailsView(BuildContext context, Event event) {
+//   if (media.isMovie) {
+//     context.pushNamed(
+//       AppRoutes.movieDetailsRoute,
+//       params: {'movieId': media.tmdbID.toString()},
+//     );
+//   } else {
+//     context.pushNamed(
+//       AppRoutes.tvShowDetailsRoute,
+//       params: {'tvShowId': media.tmdbID.toString()},
+//     );
+//   }
+// }
 
-Widget getSimilarSection(List<Media>? similar) {
-  if (similar != null && similar.isNotEmpty) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SectionTitle(title: AppStrings.similar),
-        SectionListView(
-          height: AppSize.s240,
-          itemCount: similar.length,
-          itemBuilder: (context, index) => SectionListViewCard(
-            media: similar[index],
-          ),
-        ),
-      ],
-    );
-  } else {
-    return const SizedBox();
-  }
-}
+// Widget getSimilarSection(List<Event>? similar) {
+//   if (similar != null && similar.isNotEmpty) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const SectionTitle(title: AppStrings.similar),
+//         SectionListView(
+//           height: AppSize.s240,
+//           itemCount: similar.length,
+//           itemBuilder: (context, index) => SectionListViewCard(
+//             media: similar[index],
+//           ),
+//         ),
+//       ],
+//     );
+//   } else {
+//     return const SizedBox();
+//   }
+// }
 
 Widget getOverviewSection(String overview) {
   if (overview.isNotEmpty) {

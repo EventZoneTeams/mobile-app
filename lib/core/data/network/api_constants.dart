@@ -1,7 +1,5 @@
-import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
-
 class ApiConstants {
-  static const String baseUrl = '1';
+  static const String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
 
   static const String event = '$baseUrl/events';
 
@@ -22,11 +20,15 @@ class ApiConstants {
   // static const String eventFeedback = '$baseUrl/event-products';
 
   // movies paths
-  static String userLogin(String uid) {
+  static String userLogin(int uid) {
     return '$user/$uid';
   }
 
   static String userRegister() {
     return '$user/register';
+  }
+
+  static String getEventDetailPath(int eventId){
+    return '$event/$eventId';
   }
 }
