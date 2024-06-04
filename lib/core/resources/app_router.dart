@@ -25,23 +25,23 @@ class AppRouter {
             routes: [
               GoRoute(
                 name: AppRoutes.eventPackageEvent,
-                path: movieDetailsPath,
+                path: eventsPath,
                 // pageBuilder: (context, state) => CupertinoPage(
                 //   child: MovieDetailsView(
                 //     movieId: int.parse(state.params['movieId']!),
                 //   ),
-                ),
+                // ),
               ),
               GoRoute(
-                name: AppRoutes.popularMoviesRoute,
-                path: popularMoviesPath,
+                name: AppRoutes.eventPackageEvent,
+                path: eventsPath,
                 // pageBuilder: (context, state) => const CupertinoPage(
                 //   child: PopularMoviesView(),
                 // ),
               ),
               GoRoute(
-                name: AppRoutes.topRatedMoviesRoute,
-                path: topRatedMoviesPath,
+                name: AppRoutes.eventPackageEvent,
+                path: eventsPath,
                 // pageBuilder: (context, state) => const CupertinoPage(
                 //   child: TopRatedMoviesView(),
                 // ),
@@ -49,47 +49,47 @@ class AppRouter {
             ],
           ),
           GoRoute(
-            name: AppRoutes.tvShowsRoute,
-            path: tvShowsPath,
+            name: AppRoutes.eventPackageEvent,
+            path: eventsPath,
             // pageBuilder: (context, state) => const NoTransitionPage(
             //   child: TVShowsView(),
             // ),
-            routes: [
-              GoRoute(
-                name: AppRoutes.tvShowDetailsRoute,
-                path: tvShowDetailsPath,
-                pageBuilder: (context, state) => CupertinoPage(
-                  // child: TVShowDetailsView(
-                  //   tvShowId: int.parse(state.params['tvShowId']!),
-                  // ),
-                ),
-              ),
-              GoRoute(
-                name: AppRoutes.popularTvShowsRoute,
-                path: popularTVShowsPath,
-                // pageBuilder: (context, state) => const CupertinoPage(
-                //   child: PopularTVShowsView(),
-                // ),
-              ),
-              GoRoute(
-                name: AppRoutes.topRatedTvShowsRoute,
-                path: topRatedTVShowsPath,
-                // pageBuilder: (context, state) => const CupertinoPage(
-                //   child: TopRatedTVShowsView(),
-                // ),
-              ),
-            ],
+            // routes: [
+            //   GoRoute(
+            //     name: AppRoutes.eventPackageEvent,
+            //     path: eventsPath,
+            //     pageBuilder: (context, state) => CupertinoPage(
+            //       // child: TVShowDetailsView(
+            //       //   tvShowId: int.parse(state.params['tvShowId']!),
+            //       // ),
+            //     ),
+            //   ),
+            //   GoRoute(
+            //     name: AppRoutes.eventPackageEvent,
+            //     path: eventsPath,
+            //     // pageBuilder: (context, state) => const CupertinoPage(
+            //     //   child: PopularTVShowsView(),
+            //     // ),
+            //   ),
+            //   GoRoute(
+            //     name: AppRoutes.eventPackageEvent,
+            //     path: eventsPath,
+            //     // pageBuilder: (context, state) => const CupertinoPage(
+            //     //   child: TopRatedTVShowsView(),
+            //     // ),
+            //   ),
+            // ],
           ),
           GoRoute(
-            name: AppRoutes.searchRoute,
-            path: searchPath,
+            name: AppRoutes.eventPackageEvent,
+            path: eventsPath,
             // pageBuilder: (context, state) => const NoTransitionPage(
             //   child: SearchView(),
             // ),
           ),
           GoRoute(
-            name: AppRoutes.watchlistRoute,
-            path: watchlistPath,
+            name: AppRoutes.eventPackageEvent,
+            path: eventsPath,
             // pageBuilder: (context, state) => const NoTransitionPage(
             //   child: WatchlistView(),
             // ),

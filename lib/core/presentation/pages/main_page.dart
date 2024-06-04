@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> {
       body: WillPopScope(
         onWillPop: () async {
           final String location = GoRouterState.of(context).location;
-          if (!location.startsWith(moviesPath)) {
+          if (!location.startsWith(eventsPath)) {
             _onItemTapped(0, context);
           }
           return true;
