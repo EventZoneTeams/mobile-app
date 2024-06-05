@@ -6,7 +6,7 @@ import 'package:eventzone/core/resources/app_router.dart';
 import 'package:eventzone/core/services/service_locator.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_theme.dart';
-import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+// import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
 
 void main() async {
   // await Hive.initFlutter();
@@ -14,12 +14,12 @@ void main() async {
   // await Hive.openBox('items');
   // ServiceLocator.init();
 
-  runApp(
-    BlocProvider(
-      create: (context) => sl<WatchlistBloc>(),
-      child: const MyApp(),
-    ),
-  );
+  // runApp(
+  //   BlocProvider(
+      // create: (context) => sl<WatchlistBloc>(),
+      // child: const MyApp(),
+    // ),
+  // );
 }
 
 class MyApp extends StatelessWidget {

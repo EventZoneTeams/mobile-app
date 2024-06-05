@@ -8,7 +8,6 @@ import 'package:eventzone/core/domain/entities/event_details.dart';
 part 'event_details_event.dart';
 part 'event_details_state.dart';
 
-
 class EventDetailsBloc extends Bloc<EventDetailsEvent, EventDetailsState> {
   final GetEventDetailUseCase _getEventDetailsUseCase;
 

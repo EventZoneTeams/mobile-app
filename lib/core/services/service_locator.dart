@@ -4,9 +4,9 @@ import 'package:eventzone/events/domain/usecases/get_event_details_usecase.dart'
 import 'package:eventzone/events/domain/usecases/get_events_usecase.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../events/data/datasource/events_remote_data_source.dart';
-import '../../events/presentation/controllers/event_details_bloc/Event_details_bloc.dart';
-import '../../events/presentation/controllers/events_bloc/events_bloc.dart';
+import 'package:eventzone/events/data/datasource/events_remote_data_source.dart';
+import 'package:eventzone/events/presentation/controllers/event_details_bloc/event_details_bloc.dart';
+import 'package:eventzone/events/presentation/controllers/events_bloc/events_bloc.dart';
 
 // import 'package:eventzone/movies/presentation/controllers/movie_details_bloc/movie_details_bloc.dart';
 // import 'package:eventzone/movies/presentation/controllers/movies_bloc/movies_bloc.dart';

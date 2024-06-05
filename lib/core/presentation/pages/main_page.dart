@@ -22,41 +22,41 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: WillPopScope(
-        onWillPop: () async {
+      body: PopScope(
+        canPop: true,
+          onPopInvoked : (didPop) async  {
           final String location = GoRouterState.of(context).location;
           if (!location.startsWith(eventsPath)) {
             _onItemTapped(0, context);
           }
-          return true;
         },
         child: widget.child,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            label: AppStrings.movies,
+            label: AppStrings.event,
             icon: Icon(
               Icons.movie_creation_rounded,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
-            label: AppStrings.shows,
+            label: AppStrings.event,
             icon: Icon(
               Icons.tv_rounded,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
-            label: AppStrings.search,
+            label: AppStrings.event,
             icon: Icon(
               Icons.search_rounded,
               size: AppSize.s20,
             ),
           ),
           BottomNavigationBarItem(
-            label: AppStrings.watchlist,
+            label: AppStrings.event,
             icon: Icon(
               Icons.bookmark_rounded,
               size: AppSize.s20,
@@ -71,10 +71,10 @@ class _MainPageState extends State<MainPage> {
 
   int _getSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith(ev)) {
+    if (location.startsWith(eventsPath)) {
       return 0;
     }
-    if (location.startsWith(tvShowsPath)) {
+    if (location.startsWith(userPath)) {
       return 1;
     }
     if (location.startsWith(searchPath)) {
@@ -89,16 +89,16 @@ class _MainPageState extends State<MainPage> {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.goNamed(AppRoutes.moviesRoute);
+        context.goNamed(AppRoutes.event);
         break;
       case 1:
-        context.goNamed(AppRoutes.tvShowsRoute);
+        context.goNamed(AppRoutes.user);
         break;
       case 2:
-        context.goNamed(AppRoutes.searchRoute);
+        context.goNamed(AppRoutes.watchlist);
         break;
       case 3:
-        context.goNamed(AppRoutes.watchlistRoute);
+        context.goNamed(AppRoutes.search);
         break;
     }
   }
