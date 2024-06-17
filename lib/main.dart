@@ -1,25 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:eventzone/core/domain/entities/event.dart';
 import 'package:eventzone/core/resources/app_router.dart';
-import 'package:eventzone/core/services/service_locator.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_theme.dart';
-// import 'package:eventzone/watchlist/presentation/controllers/watchlist_bloc/watchlist_bloc.dart';
+import 'package:eventzone/data/remote_source/order_remote_datasouce.dart';
+import 'package:eventzone/data/repo/order_repository.dart';
+import 'package:eventzone/presentation/event_provider.dart';
+import 'package:eventzone/presentation/order_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:eventzone/data/remote_source/event_remote_data_source.dart';
+import 'package:eventzone/data/repo/event_repository.dart';
+
+// ... (Your EventsProvider class as defined above)
 
 void main() async {
-  // await Hive.initFlutter();
-  // Hive.registerAdapter(MediaAdapter());
-  // await Hive.openBox('items');
-  // ServiceLocator.init();
+  // ... other initialization
 
-  // runApp(
-  //   BlocProvider(
-      // create: (context) => sl<WatchlistBloc>(),
-      // child: const MyApp(),
-    // ),
-  // );
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => EventsProvider(EventsRepository(EventsRemoteDataSource()))),
+        ChangeNotifierProvider(create: (context) => OrderProvider(OrderRepository(OrderRemoteDataSource()))), // Add OrderProvider here
+        // ... other providers if needed
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
