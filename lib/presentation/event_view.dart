@@ -3,6 +3,7 @@ import 'package:eventzone/data/model/event_model.dart';
 import 'package:eventzone/presentation/event_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart'; // Import for date formatting
 
 // ... (Your EventModel and EventsProvider classes)
 
@@ -73,15 +74,23 @@ class EventsScreenState extends State<EventsScreen> {
   }
 }
 
+
 class EventCard extends StatelessWidget {
   final EventModel event;
 
   const EventCard({super.key, required this.event});
 
+  String _formatDateTime(String dateTimeString) {
+    DateTime dateTime = DateTime.parse(dateTimeString);
+    final formatter = DateFormat('dd/MM/yyyy h:mm a');
+    return formatter.format(dateTime);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
+      color: Colors.grey[400], // Added background color for contrast
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -92,25 +101,49 @@ class EventCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
+                color: Colors.white, // Improved text contrast
               ),
             ),
             const SizedBox(height: 8.0),
             if (event.description != null)
-              Text('Description: ${event.description}'),
+              Text(
+                'Description: ${event.description}',
+                style: const TextStyle(color: Colors.white), // Improved text contrast
+              ),
             if (event.thumbnailUrl != null)
               CachedNetworkImage(
                 imageUrl: event.thumbnailUrl!,
+                height: 150, // Fixed height for consistent card heights
+                fit: BoxFit.cover, // Maintain aspect ratio and fill space
                 placeholder: (context, url) => const CircularProgressIndicator(),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-            Text('Start Date: ${event.eventStartDate}'),
-            Text('End Date: ${event.eventEndDate}'),
-            Text('Category: ${event.eventCategoryName}'),
+            Text(
+              'Start Date: ${_formatDateTime(event.eventStartDate)}',
+              style: const TextStyle(color: Colors.white), // Improved text contrast
+            ),
+            Text(
+              'End Date: ${_formatDateTime(event.eventEndDate)}',
+              style: const TextStyle(color: Colors.white), // Improved text contrast
+            ),
+            Text(
+              'Category: ${event.eventCategoryName}',
+              style: const TextStyle(color: Colors.white), // Improved text contrast
+            ),
             if (event.university != null)
-              Text('University: ${event.university}'),
-            Text('Donation: ${event.isDonation ? 'Yes' : 'No'}'),
+              Text(
+                'University: ${event.university}',
+                style: const TextStyle(color: Colors.white), // Improved text contrast
+              ),
+            Text(
+              'Donation: ${event.isDonation ? 'Yes' : 'No'}',
+              style: const TextStyle(color: Colors.white), // Improved text contrast
+            ),
             if (event.isDonation)
-              Text('Total Cost: \$${event.totalCost}'),
+              Text(
+                'Total Cost: \$${event.totalCost}',
+                style: const TextStyle(color: Colors.white), // Improved text contrast
+              ),
           ],
         ),
       ),

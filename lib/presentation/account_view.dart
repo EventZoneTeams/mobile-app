@@ -1,5 +1,6 @@
 import 'package:eventzone/presentation/account_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 // ... (Your AccountModel class)
@@ -61,6 +62,7 @@ class AccountScreenState extends State<AccountScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to login screen
+                      context.pushNamed('login');
                       // ...
                     },
                     child: const Text('Login'),
@@ -69,6 +71,7 @@ class AccountScreenState extends State<AccountScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to registration screen
+                      context.pushNamed('register');
                       // ...
                     },
                     child: const Text('Register'),

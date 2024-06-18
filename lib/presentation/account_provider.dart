@@ -47,7 +47,7 @@ class AccountProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> register(AccountModel account) async {
+  Future<void> register(RegisterAccountModel account) async {
     _isLoading = true;
     _errorMessage = '';
     notifyListeners();

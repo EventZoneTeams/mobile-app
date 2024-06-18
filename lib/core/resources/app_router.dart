@@ -4,7 +4,9 @@ import 'package:eventzone/data/repo/event_repository.dart';
 import 'package:eventzone/presentation/account_view.dart';
 import 'package:eventzone/presentation/event_detail_view.dart';
 import 'package:eventzone/presentation/event_view.dart';
+import 'package:eventzone/presentation/login_view.dart';
 import 'package:eventzone/presentation/order_view.dart';
+import 'package:eventzone/presentation/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/presentation/main_page.dart';
@@ -15,6 +17,8 @@ const String orderPath = '/orders';
 const String packagesPath = '/packages';
 const String accountPath = '/account';
 const String eventDetailsPath = 'events/:eventId'; // Note the dynamic segment for eventId
+const String loginPath = 'login';
+const String registerPath = 'register';
 
 class AppRouter {
   // final OrderRepository _orderRepository = OrderRepository(OrderRemoteDataSource());
@@ -65,6 +69,22 @@ class AppRouter {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: AccountScreen(),
             ),
+            routes: [
+            GoRoute(
+              name: AppRoutes.login, // Choose a suitable name
+              path: loginPath,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: LoginScreen(),
+              ),
+            ),
+            GoRoute(
+              name: AppRoutes.register, // Choose a suitable name
+              path: registerPath,
+              pageBuilder: (context, state) => const NoTransitionPage(
+                child: RegistrationScreen(),
+              ),
+            ),
+            ]
           ),
         ],
       ),

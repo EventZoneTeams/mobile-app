@@ -27,13 +27,17 @@ class EventsRemoteDataSource {
     final response = await _client.get(Uri.parse('$baseUrl/events'));
 
     if (response.statusCode == 200) {
-      final List<dynamic> jsonList = json.decode(response.body);
-      return jsonList.map((json) => EventModel.fromJson(json)).toList();
+      final Map<String, dynamic> jsonData = json.decode(response.body);
+      if (jsonData['success'] == true) { // Check for success flag
+        final List<dynamic> eventsJson = jsonData['data']['events'];
+        return eventsJson.map((json) => EventModel.fromJson(json)).toList();
+      } else {
+        throw ServerException(jsonData['message'] ?? 'Failed to fetch events');
+      }
     } else {
       throw NetworkException('Failed to load events (HTTP ${response.statusCode})');
     }
   }
-
   Future<EventDetailModel> getEventById(int eventId) async {
     final url = Uri.parse('$baseUrl/events/$eventId');
     final response = await _client.get(url, headers: {'accept': '*/*'});

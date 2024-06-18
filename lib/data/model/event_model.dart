@@ -3,8 +3,8 @@ class EventModel {
   final String name;
   final String? description;
   final String? thumbnailUrl;
-  final DateTime eventStartDate;
-  final DateTime eventEndDate;
+  final String eventStartDate;
+  final String eventEndDate;
   final String eventCategoryName;
   final String eventCategoryImageUrl;
   final String? university;
@@ -33,8 +33,8 @@ class EventModel {
       name: json['name'] as String,
       description: json['description'] as String?,
       thumbnailUrl: json['thumbnail-url'] as String?,
-      eventStartDate: DateTime.parse(json['event-start-date'] as String),
-      eventEndDate: DateTime.parse(json['event-end-date'] as String),
+      eventStartDate: json['event-start-date'] as String,
+      eventEndDate: json['event-end-date'] as String,
       eventCategoryName: json['event-category']['title'] as String,
       eventCategoryImageUrl: json['event-category']['image-url'] as String,
       university: json['university'] as String?,

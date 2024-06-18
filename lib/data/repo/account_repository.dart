@@ -44,7 +44,7 @@ class AccountRepository {
     }
   }
 
-  Future<void> register(AccountModel account) async {
+  Future<void> register(RegisterAccountModel account) async {
     // Delegate to remote data source
     await _remoteDataSource.register(account);
   }

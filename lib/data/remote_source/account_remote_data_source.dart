@@ -36,7 +36,7 @@ class AccountRemoteDataSource {
     }
   }
 
-  Future<void> register(AccountModel account) async {
+  Future<void> register(RegisterAccountModel account) async {
     final url = Uri.parse('$baseUrl/users/register');
     final headers = {'Content-Type': 'application/json'};
     final body = jsonEncode({
@@ -44,7 +44,7 @@ class AccountRemoteDataSource {
       'password': account.password,
       // Assuming your AccountModel has a password field
       'full-name': account.fullName,
-      'dob': account.dob.toIso8601String(),
+      'dob': account.dob,
       // Format DateTime to ISO 8601
       'gender': account.gender,
       'image': account.image,
