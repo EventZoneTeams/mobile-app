@@ -13,7 +13,7 @@ class EventsRepository {
     // Check if cache is valid (e.g., fetched within the last hour)
     if (_cachedEvents != null &&
         _lastFetchTime != null &&
-        DateTime.now().difference(_lastFetchTime!) < Duration(hours: 1)) {
+        DateTime.now().difference(_lastFetchTime!) < const Duration(hours: 1)) {
       return _cachedEvents!; // Return cached events
     }
 

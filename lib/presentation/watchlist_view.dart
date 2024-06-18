@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WatchlistScreen extends StatefulWidget {
-  const WatchlistScreen({Key? key}) : super(key: key);
+  const WatchlistScreen({super.key});
 
   @override
   State<WatchlistScreen> createState() => _WatchlistScreenState();

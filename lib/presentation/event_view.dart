@@ -1,23 +1,42 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eventzone/data/model/event_model.dart';
 import 'package:eventzone/presentation/event_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:eventzone/data/model/event_model.dart';
+// ... (Your EventModel and EventsProvider classes)
 
 class EventsScreen extends StatefulWidget {
-  const EventsScreen({Key? key}) : super(key: key);
+  const EventsScreen({super.key});
 
   @override
   EventsScreenState createState() => EventsScreenState();
 }
 
 class EventsScreenState extends State<EventsScreen> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
+    _scrollController.addListener(_scrollListener);
+    // Fetch initial batch of events
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<EventsProvider>(context, listen: false).fetchEvents();
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      Provider.of<EventsProvider>(context, listen: false).fetchMoreEvents();
+    }
   }
 
   @override
@@ -28,16 +47,23 @@ class EventsScreenState extends State<EventsScreen> {
       ),
       body: Consumer<EventsProvider>(
         builder: (context, eventsProvider, child) {
-          if (eventsProvider.isLoading) {
+          if (eventsProvider.isLoading && eventsProvider.events.isEmpty) {
             return const Center(child: CircularProgressIndicator());
           } else if (eventsProvider.errorMessage.isNotEmpty) {
             return Center(child: Text(eventsProvider.errorMessage));
           } else {
             return ListView.builder(
-              itemCount: eventsProvider.events.length,
+              controller: _scrollController,
+              itemCount: eventsProvider.events.length + (eventsProvider.hasMore ? 1 : 0),
               itemBuilder: (context, index) {
-                final event = eventsProvider.events[index];
-                return EventCard(event: event); // Use the custom EventCard
+                if (index < eventsProvider.events.length) {
+                  final event = eventsProvider.events[index];
+                  return EventCard(event: event);
+                } else if (eventsProvider.hasMore) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return const SizedBox.shrink(); // Reached the end of the list
+                }
               },
             );
           }
@@ -50,7 +76,7 @@ class EventsScreenState extends State<EventsScreen> {
 class EventCard extends StatelessWidget {
   final EventModel event;
 
-  const EventCard({Key? key, required this.event}) : super(key: key);
+  const EventCard({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +98,11 @@ class EventCard extends StatelessWidget {
             if (event.description != null)
               Text('Description: ${event.description}'),
             if (event.thumbnailUrl != null)
-              Image.network(event.thumbnailUrl!),
+              CachedNetworkImage(
+                imageUrl: event.thumbnailUrl!,
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             Text('Start Date: ${event.eventStartDate}'),
             Text('End Date: ${event.eventEndDate}'),
             Text('Category: ${event.eventCategoryName}'),

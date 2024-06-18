@@ -1,6 +1,7 @@
 import 'package:eventzone/data/model/event_detail_model.dart';
 import 'package:eventzone/data/remote_source/event_remote_data_source.dart';
 import 'package:eventzone/data/repo/event_repository.dart';
+import 'package:eventzone/presentation/account_view.dart';
 import 'package:eventzone/presentation/event_detail_view.dart';
 import 'package:eventzone/presentation/event_view.dart';
 import 'package:eventzone/presentation/order_view.dart';
@@ -58,13 +59,13 @@ class AppRouter {
           //     child: PackagesView(),
           //   ),
           // ),
-          // GoRoute(
-          //   name: AppRoutes.account,
-          //   path: accountPath,
-          //   pageBuilder: (context, state) => const NoTransitionPage(
-          //     child: AccountScreen(),
-          //   ),
-          // ),
+          GoRoute(
+            name: AppRoutes.account,
+            path: accountPath,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: AccountScreen(),
+            ),
+          ),
         ],
       ),
     ],
@@ -75,7 +76,7 @@ class AppRouter {
 class EventDetailScreenWrapper extends StatefulWidget {
   final int eventId;
 
-  const EventDetailScreenWrapper({Key? key, required this.eventId}) : super(key: key);
+  const EventDetailScreenWrapper({super.key, required this.eventId});
 
   @override
   EventDetailScreenWrapperState createState() => EventDetailScreenWrapperState();

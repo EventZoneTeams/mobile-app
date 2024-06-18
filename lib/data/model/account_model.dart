@@ -1,8 +1,9 @@
-class UserModel {
+class AccountModel {
   final int id;
   final String email;
   final String unsignFullName;
   final String fullName;
+  final String password;
   final DateTime dob;
   final String gender;
   final String image;
@@ -11,10 +12,11 @@ class UserModel {
   final String roleName;
   final dynamic role; // You might need to define a specific type for 'role'
 
-  UserModel({
+  AccountModel({
     required this.id,
     required this.email,
     required this.unsignFullName,
+    required this.password,
     required this.fullName,
     required this.dob,
     required this.gender,
@@ -25,11 +27,12 @@ class UserModel {
     required this.role,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory AccountModel.fromJson(Map<String, dynamic> json) {
+    return AccountModel(
       id: json['id'] as int,
       email: json['email'] as String,
       unsignFullName: json['unsign-full-name'] as String,
+      password: json['password'] as String,
       fullName: json['full-name'] as String,
       dob: DateTime.parse(json['dob'] as String),
       gender: json['gender'] as String,

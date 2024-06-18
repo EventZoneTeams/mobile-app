@@ -1,8 +1,11 @@
 import 'package:eventzone/core/resources/app_router.dart';
 import 'package:eventzone/core/resources/app_strings.dart';
 import 'package:eventzone/core/resources/app_theme.dart';
-import 'package:eventzone/data/remote_source/order_remote_datasouce.dart';
+import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
+import 'package:eventzone/data/remote_source/order_remote_data%20source.dart';
+import 'package:eventzone/data/repo/account_repository.dart';
 import 'package:eventzone/data/repo/order_repository.dart';
+import 'package:eventzone/presentation/account_provider.dart';
 import 'package:eventzone/presentation/event_provider.dart';
 import 'package:eventzone/presentation/order_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +23,9 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => EventsProvider(EventsRepository(EventsRemoteDataSource()))),
-        ChangeNotifierProvider(create: (context) => OrderProvider(OrderRepository(OrderRemoteDataSource()))), // Add OrderProvider here
+        ChangeNotifierProvider(create: (context) => OrderProvider(OrderRepository(OrderRemoteDataSource()))),
+        ChangeNotifierProvider(create: (context) => AccountProvider(AccountRepository(AccountRemoteDataSource()))),
+        // Add OrderProvider here
         // ... other providers if needed
       ],
       child: const MyApp(),

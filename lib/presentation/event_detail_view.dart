@@ -5,7 +5,7 @@ import 'package:eventzone/data/model/event_detail_model.dart'; // Your model
 class EventDetailScreen extends StatelessWidget {
   final EventDetailModel event;
 
-  const EventDetailScreen({Key? key, required this.event}) : super(key: key);
+  const EventDetailScreen({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {

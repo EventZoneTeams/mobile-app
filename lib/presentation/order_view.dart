@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({Key? key}) : super(key: key);
+  const OrdersScreen({super.key});
 
   @override
   State<OrdersScreen> createState() => _OrdersScreenState();
