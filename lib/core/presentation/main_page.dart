@@ -1,3 +1,4 @@
+import 'package:eventzone/presentation/bottom_navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/resources/app_router.dart';
@@ -5,6 +6,7 @@ import 'package:eventzone/core/resources/app_strings.dart';
 
 import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/core/resources/app_values.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   final Widget child;
@@ -16,7 +18,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final _selectedIndex = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +27,13 @@ class _MainPageState extends State<MainPage> {
         onPopInvoked: (didPop) async {
           final String location = GoRouter.of(context).routerDelegate.currentConfiguration.fullPath;
           if (!location.startsWith(eventsPath)) {
-            _onItemTapped(0);
+            Provider.of<BottomNavigationProvider>(context, listen: false).updateSelectedIndex(0);
           }
         },
         child: widget.child,
       ),
-      bottomNavigationBar: ValueListenableBuilder<int>(
-        valueListenable: _selectedIndex,
-        builder: (context, index, _) {
+      bottomNavigationBar: Consumer<BottomNavigationProvider>(
+        builder: (context, provider, _) {
           return BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
@@ -65,30 +65,29 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
             ],
-            currentIndex: index,
-            onTap: _onItemTapped,
+            currentIndex: provider.selectedIndex,
+            onTap: (index) {
+              provider.updateSelectedIndex(index);
+              // Handle navigation
+              switch (index) {
+                case 0:
+                  context.goNamed(AppRoutes.events);
+                  break;
+                case 1:
+                  context.goNamed(AppRoutes.orders);
+                  break;
+                case 2:
+                // Correct the navigation for case 2 if needed
+                // context.goNamed(correctRoute);
+                  break;
+                case 3:
+                  context.goNamed(AppRoutes.account);
+                  break;
+              }
+            },
           );
         },
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    _selectedIndex.value = index;
-
-    switch (index) {
-      case 0:
-        context.goNamed(AppRoutes.events);
-        break;
-      case 1:
-        context.goNamed(AppRoutes.orders);
-        break;
-      case 2:
-        context.goNamed(AppRoutes.orders);
-        break;
-      case 3:
-        context.goNamed(AppRoutes.account);
-        break;
-    }
   }
 }

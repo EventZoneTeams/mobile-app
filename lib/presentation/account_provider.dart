@@ -1,4 +1,5 @@
 import 'package:eventzone/data/model/account_model.dart';
+import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
 import 'package:eventzone/data/repo/account_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +8,14 @@ class AccountProvider extends ChangeNotifier {
   AccountModel? _account;
   bool _isLoading = false;
   String _errorMessage = '';
+  List<UniversityModel> _universities = []; // Add a field for universities
 
   AccountProvider(this._repository);
 
   AccountModel? get account => _account;
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
+  List<UniversityModel> get universities => _universities; // Expose universities
 
   Future<void> checkLoginStatus() async {
     _isLoading = true;
@@ -74,6 +77,19 @@ class AccountProvider extends ChangeNotifier {
       _account = null; // Clear account details after logout
     } catch (e) {
       _errorMessage = 'Error logging out: ${e.toString()}';
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+  Future<void> fetchUniversities() async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _universities = await _repository.getUniversities();
+    } catch (e) {
+      _errorMessage = 'Error fetching universities: ${e.toString()}';
     } finally {
       _isLoading = false;
       notifyListeners();

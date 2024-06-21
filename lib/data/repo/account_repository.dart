@@ -54,4 +54,7 @@ class AccountRepository {
     await storage.delete(key: 'refresh_token');
     // Potentially clear other relevant data
   }
+  Future<List<UniversityModel>> getUniversities() async {
+    return await _remoteDataSource.getUniversities();
+  }
 }

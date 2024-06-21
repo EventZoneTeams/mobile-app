@@ -34,27 +34,22 @@ class AppRouter {
             pageBuilder: (context, state) => const NoTransitionPage(
               child: EventsScreen(),
             ),
-            //   )routes: [
-            //   GoRoute(
-            //     name: AppRoutes.eventDetails,
-            //     path: eventDetailsPath,
-            //     pageBuilder: (context, state) {
-            //       final eventId = int.parse(state.pathParameters['eventId']!);
-            //       return NoTransitionPage(
-            //         child: EventDetailScreenWrapper(eventId: eventId),
-            //       );
-            //     },
-            //   ),
-            //   // ... (other routes)
-            //
-            // ],
+            routes: [
+              GoRoute(
+                name: AppRoutes.eventDetails,
+                path: eventDetailsPath,
+                builder: (context, state) {
+                  final eventId = int.parse(state.pathParameters['eventId']!);
+                  return EventDetailScreenWrapper(eventId: eventId);
+                },
+              ),
+
+            ],
           ),
           GoRoute(
             name: AppRoutes.orders,
             path: orderPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: OrdersScreen(),
-            ),
+            builder: (context, state) => const OrdersScreen(),
           ),
           // GoRoute(
           //   name: AppRoutes.packages,
@@ -66,24 +61,18 @@ class AppRouter {
           GoRoute(
             name: AppRoutes.account,
             path: accountPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: AccountScreen(),
-            ),
+            builder: (context, state) => const AccountScreen(),
             routes: [
-            GoRoute(
-              name: AppRoutes.login, // Choose a suitable name
-              path: loginPath,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: LoginScreen(),
+              GoRoute(
+                name: AppRoutes.login, // Choose a suitable name
+                path: loginPath,
+                builder: (context, state) => const LoginScreen(),
               ),
-            ),
-            GoRoute(
-              name: AppRoutes.register, // Choose a suitable name
-              path: registerPath,
-              pageBuilder: (context, state) => const NoTransitionPage(
-                child: RegistrationScreen(),
+              GoRoute(
+                name: AppRoutes.register, // Choose a suitable name
+                path: registerPath,
+                builder: (context, state) => const RegistrationScreen(),
               ),
-            ),
             ]
           ),
         ],

@@ -76,3 +76,25 @@ class RegisterAccountModel {
     };
   }
 }
+class PaginationModel {
+  final int currentPage;
+  final int pageSize;
+  final int totalCount;
+  final int totalPages;
+
+  PaginationModel({
+    required this.currentPage,
+    required this.pageSize,
+    required this.totalCount,
+    required this.totalPages,
+  });
+
+  factory PaginationModel.fromJson(Map<String, dynamic> json) {
+    return PaginationModel(
+      currentPage: json['current-page'] as int,
+      pageSize: json['page-size'] as int,
+      totalCount: json['total-count'] as int,
+      totalPages: json['total-pages'] as int,
+    );
+  }
+}

@@ -1,7 +1,14 @@
+import 'dart:io';
+
+import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/data/model/account_model.dart';
+import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
 import 'package:eventzone/presentation/account_provider.dart';
+import 'package:eventzone/presentation/component/university_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -20,6 +27,38 @@ class RegistrationScreenState extends State<RegistrationScreen> {
   final _genderController = TextEditingController();
   final _imageController = TextEditingController();
   final _universityController = TextEditingController();
+  DateTime? _selectedDate; // To store the selected date
+  UniversityModel? _selectedUniversity; // To store the selected university
+  File? _selectedImage; // To store the selected image
+  String? _selectedGender; // To store the selected gender
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _selectedImage = File(pickedFile.path);
+      });
+    }
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    ).then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+        _dobController.text = DateFormat('yyyy-MM-dd').format(_selectedDate!);
+      });
+    });
+  }
 
   Future<void> _registerUser(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -97,50 +136,47 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
-                TextFormField(
+                TextField(
                   controller: _dobController,
-                  decoration: const InputDecoration(labelText: 'Date of Birth (YYYY-MM-DD)'),
-                  // Consider using a date picker for better UX
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your date of birth';
-                    }
-                    return null;
-                  },
+                  decoration: const InputDecoration(labelText: 'Date of Birth'),
+                  readOnly: true,
+                  onTap: _presentDatePicker, // Call the date picker function
                 ),
                 const SizedBox(height: 20),
-                TextFormField(
-                  controller: _genderController,
+                DropdownButtonFormField<String>(
+                  value: _selectedGender,
                   decoration: const InputDecoration(labelText: 'Gender'),
-                  // Consider using a dropdown or radio buttons for gender selection
+                  items: ['Male', 'Female', 'Other']
+                      .map((gender) => DropdownMenuItem(
+                    value: gender,
+                    child: Text(gender),
+                  ))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value;
+                    });
+                  },
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your gender';
+                    if (value == null) {
+                      return 'Please select your gender';
                     }
                     return null;
                   },
                 ),
                 const SizedBox(height: 20),
-                TextFormField(
-                  controller: _imageController,
-                  decoration: const InputDecoration(labelText: 'Image URL'),
-                  // You'll likely want to replace this with an image picker widget
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please provide an image URL';
-                    }
-                    return null;
-                  },
+                ElevatedButton(
+                  onPressed: _pickImage,
+                  child: const Text('Choose Image'),
                 ),
+                if (_selectedImage != null)
+                  Image.file(_selectedImage!),
                 const SizedBox(height: 20),
-                TextFormField(
-                  controller: _universityController,
-                  decoration: const InputDecoration(labelText: 'University'),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your university';
-                    }
-                    return null;
+                UniversityPicker(
+                  onUniversitySelected: (university) {
+                    setState(() {
+                      _selectedUniversity = university;
+                    });
                   },
                 ),
                 const SizedBox(height: 30),
@@ -148,10 +184,9 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   onPressed: () => _registerUser(context),
                   child: const Text('Register'),
                 ),
-                const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
-                    GoRouter.of(context).go('${GoRouter.of(context).routerDelegate.currentConfiguration.fullPath}/login');
+                    context.pushNamed(AppRoutes.login); // Use named route
                   },
                   child: const Text('Already have an account? Login'),
                 ),

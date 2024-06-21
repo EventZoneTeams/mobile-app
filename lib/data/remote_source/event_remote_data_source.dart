@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eventzone/data/model/account_model.dart';
 import 'package:eventzone/data/model/event_detail_model.dart';
 import 'package:eventzone/data/model/event_model.dart';
 import 'package:http/http.dart' as http;
@@ -20,42 +21,71 @@ class ServerException implements Exception {
 }
 
 class EventsRemoteDataSource {
-  final String baseUrl = 'https://eventzone.azurewebsites.net/api/v1/';
-  final http.Client _client = http.Client(); // Use a single client for connection pooling
+  final String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
 
-  Future<List<EventModel>> fetchEvents() async {
-    final response = await _client.get(Uri.parse('$baseUrl/events'));
+  // Singleton pattern for http.Client (optional)
+  static final http.Client _client = http.Client();
+
+  Future<Map<String, dynamic>> fetchEvents(int page, int pageSize) async {
+    final response = await _client.get(
+        Uri.parse('$baseUrl/events?page-number=$page&page-size=$pageSize')
+    );
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = json.decode(response.body);
-      if (jsonData['success'] == true) { // Check for success flag
-        final List<dynamic> eventsJson = jsonData['data']['events'];
-        return eventsJson.map((json) => EventModel.fromJson(json)).toList();
+
+      // Validate response structure
+      if (jsonData['success'] == null || jsonData['data'] == null) {
+        throw ServerException('Invalid API response format');
+      }
+
+      if (jsonData['success'] == true) {
+        final List<EventModel> events = (jsonData['data'] as List)
+            .map((json) => EventModel.fromJson(json))
+            .toList();
+        print('Count event: ${events.length}');
+
+        final PaginationModel pagination = PaginationModel.fromJson(jsonData);
+        return {
+          'events': events,
+          'pagination': pagination,
+        };
       } else {
         throw ServerException(jsonData['message'] ?? 'Failed to fetch events');
       }
     } else {
-      throw NetworkException('Failed to load events (HTTP ${response.statusCode})');
+      // Handle specific HTTP error codes (optional)
+      if (response.statusCode == 404) {
+        throw NetworkException('Events not found');
+      } else {
+        throw NetworkException('Failed to load events (HTTP ${response.statusCode})');
+      }
     }
   }
+
   Future<EventDetailModel> getEventById(int eventId) async {
     final url = Uri.parse('$baseUrl/events/$eventId');
     final response = await _client.get(url, headers: {'accept': '*/*'});
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonData = json.decode(response.body);
+      // Validate response structure
+      if (jsonData['success'] == null || jsonData['data'] == null) {
+        throw ServerException('Invalid API response format');
+      }
+
       if (jsonData['success'] == true) {
         return EventDetailModel.fromJson(jsonData['data']);
       } else {
         throw ServerException(jsonData['message'] ?? 'Failed to get event');
       }
     } else {
-      throw NetworkException('Failed to load event details (HTTP ${response.statusCode})');
+      // Handle specific HTTP error codes (optional)
+      if (response.statusCode == 404) {
+        throw NetworkException('Event not found');
+      } else {
+        throw NetworkException('Failed to load event details (HTTP ${response.statusCode})');
+      }
     }
-  }
-
-  // Remember to close the HTTP client when it's no longer needed
-  void dispose() {
-    _client.close();
   }
 }

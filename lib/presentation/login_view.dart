@@ -1,4 +1,6 @@
+import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -57,6 +59,13 @@ class LoginScreenState extends State<LoginScreen> {
                   }
                 },
                 child: const Text('Login'),
+              ),
+              const SizedBox(height: 10), // Add some spacing
+              TextButton(
+                onPressed: () {
+                  context.pushNamed(AppRoutes.register); // Use named route
+                },
+                child: const Text('Don\'t have an account? Register'),
               ),
             ],
           ),

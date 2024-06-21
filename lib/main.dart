@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:eventzone/data/remote_source/event_remote_data_source.dart';
 import 'package:eventzone/data/repo/event_repository.dart';
 
+import 'presentation/bottom_navigation_provider.dart';
+
 // ... (Your EventsProvider class as defined above)
 
 void main() async {
@@ -25,6 +27,7 @@ void main() async {
         ChangeNotifierProvider(create: (context) => EventsProvider(EventsRepository(EventsRemoteDataSource()))),
         ChangeNotifierProvider(create: (context) => OrderProvider(OrderRepository(OrderRemoteDataSource()))),
         ChangeNotifierProvider(create: (context) => AccountProvider(AccountRepository(AccountRemoteDataSource()))),
+        ChangeNotifierProvider(create: (context) => BottomNavigationProvider()),
         // Add OrderProvider here
         // ... other providers if needed
       ],
