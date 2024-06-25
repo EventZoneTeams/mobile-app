@@ -5,16 +5,16 @@ import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
 import 'package:eventzone/data/remote_source/order_remote_data%20source.dart';
 import 'package:eventzone/data/repo/account_repository.dart';
 import 'package:eventzone/data/repo/order_repository.dart';
-import 'package:eventzone/presentation/account_provider.dart';
-import 'package:eventzone/presentation/event_provider.dart';
-import 'package:eventzone/presentation/order_provider.dart';
+import 'package:eventzone/presentation/provider/account_provider.dart';
+import 'package:eventzone/presentation/provider/event_provider.dart';
+import 'package:eventzone/presentation/provider/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:eventzone/data/remote_source/event_remote_data_source.dart';
 import 'package:eventzone/data/repo/event_repository.dart';
 
-import 'presentation/bottom_navigation_provider.dart';
+import 'presentation/provider/bottom_navigation_provider.dart';
 
 // ... (Your EventsProvider class as defined above)
 

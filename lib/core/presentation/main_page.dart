@@ -1,4 +1,4 @@
-import 'package:eventzone/presentation/bottom_navigation_provider.dart';
+import 'package:eventzone/presentation/provider/bottom_navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:eventzone/core/resources/app_router.dart';

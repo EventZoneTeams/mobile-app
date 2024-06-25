@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:eventzone/core/resources/app_routes.dart';
 import 'package:eventzone/data/model/account_model.dart';
 import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
-import 'package:eventzone/presentation/account_provider.dart';
+import 'package:eventzone/presentation/provider/account_provider.dart';
 import 'package:eventzone/presentation/component/university_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -43,6 +43,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
+
   void _presentDatePicker() {
     showDatePicker(
       context: context,
@@ -71,20 +72,42 @@ class RegistrationScreenState extends State<RegistrationScreen> {
         image: _imageController.text,
         university: _universityController.text,
       );
+      // Trigger registration and store the result
+      final registrationResult = await Provider.of<AccountProvider>(context, listen: false).register(account);
 
-      await Provider.of<AccountProvider>(context, listen: false).register(account);
-
-      if (Provider.of<AccountProvider>(context, listen: false).errorMessage.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Registration Successful!')),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(Provider.of<AccountProvider>(context, listen: false).errorMessage)),
-        );
+      // Check registration status and provide feedback AFTER the async operation
+      if (mounted) { // Check if the widget is still mounted
+        final accountProvider = Provider.of<AccountProvider>(context, listen: false);
+        if (accountProvider.errorMessage.isEmpty) {
+          // Registration successful
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Registration Successful!')),
+          );
+          // Navigate to account screen (replace with your actual route)
+          context.goNamed(AppRoutes.account);
+        } else {
+          // Registration failed
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Registration Error'),
+              content: Text(
+                  accountProvider.errorMessage,
+                  style: const TextStyle(color: Colors.black),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
+        }
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

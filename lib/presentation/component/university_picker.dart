@@ -1,5 +1,7 @@
+import 'package:eventzone/core/presentation/component/dropdown_custom.dart'; // Import your custom dropdown item
+import 'package:eventzone/core/resources/app_colors.dart';
 import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
-import 'package:eventzone/presentation/account_provider.dart';
+import 'package:eventzone/presentation/provider/account_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,29 +17,20 @@ class UniversityPicker extends StatefulWidget {
 class UniversityPickerState extends State<UniversityPicker> {
   UniversityModel? _selectedUniversity;
   List<UniversityModel> _filteredUniversities = [];
-  String _searchQuery = '';
 
   @override
   void initState() {
     super.initState();
-    _fetchUniversities();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _fetchUniversities();
+    });
   }
 
   Future<void> _fetchUniversities() async {
     final accountProvider = Provider.of<AccountProvider>(context, listen: false);
-    await accountProvider.fetchUniversities();
+    final universities = await accountProvider.fetchUniversities();
     setState(() {
-      _filteredUniversities = accountProvider.universities;
-    });
-  }
-
-  void _filterUniversities(String query) {
-    setState(() {
-      _searchQuery = query;
-      _filteredUniversities = Provider.of<AccountProvider>(context, listen: false)
-          .universities
-          .where((uni) => uni.name.toLowerCase().contains(query.toLowerCase()))
-          .toList();
+      _filteredUniversities = universities; // Update the state with fetched universities
     });
   }
 
@@ -45,35 +38,31 @@ class UniversityPickerState extends State<UniversityPicker> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          onChanged: _filterUniversities,
-          decoration: const InputDecoration(
-            labelText: 'Search University',
-          ),
-        ),
-        const SizedBox(height: 10),
+        // Dropdown
         DropdownButtonFormField<UniversityModel>(
           value: _selectedUniversity,
           decoration: const InputDecoration(
             labelText: 'University',
           ),
+          dropdownColor: AppColors.primaryBackground, // Set dropdown background color
+          borderRadius: const BorderRadius.all(Radius.circular(20)), // Set border radius
           items: _filteredUniversities.map((uni) {
-            return DropdownMenuItem<UniversityModel>(
+            return AppDropdownMenuItem<UniversityModel>( // Use your custom dropdown item
+              (Text(uni.code)), // Shortened text when selected
               value: uni,
-              child: Text(uni.name),
+              isSelected: _selectedUniversity == uni,
+              child:
+              SizedBox(
+                width: 350,
+                child: Text(uni.name),
+              ) ,
             );
           }).toList(),
           onChanged: (value) {
             setState(() {
               _selectedUniversity = value;
             });
-            widget.onUniversitySelected(value); // Notify parent widget
-          },
-          validator: (value) {
-            if (value == null && _searchQuery.isNotEmpty) {
-              return 'Please select a university from the list';
-            }
-            return null;
+            widget.onUniversitySelected(value);
           },
         ),
       ],

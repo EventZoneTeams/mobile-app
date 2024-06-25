@@ -48,15 +48,16 @@ class AccountRemoteDataSource {
       'dob': account.dob,
       // Format DateTime to ISO 8601
       'gender': account.gender,
-      'image': account.image,
+      // 'image': account.image
+      'image': 'a',
       'university': account.university,
     });
-
+    print(http.post(url, headers: headers, body: body));
     final response = await http.post(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {
       // Registration successful (you might want to parse the response for confirmation)
-      print('Registration successful');
+      print(response);
     } else {
       // Handle registration errors
       final jsonMap = jsonDecode(response.body);

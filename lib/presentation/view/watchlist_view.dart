@@ -1,5 +1,5 @@
 import 'package:eventzone/data/model/event_model.dart';
-import 'package:eventzone/presentation/watchlist_provider.dart';
+import 'package:eventzone/presentation/provider/watchlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -7,7 +7,23 @@ ThemeData getApplicationTheme() {
   return ThemeData(
     // main colors
     scaffoldBackgroundColor: AppColors.primaryBackground,
-
+    // Custom DropdownMenu Theme
+    dropdownMenuTheme: DropdownMenuThemeData(
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.secondaryBackground,
+        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      textStyle: _getTextStyle(
+        fontSize: 14,
+        color: AppColors.primaryText,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
     // Bottom nav bar theme
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.secondaryBackground,

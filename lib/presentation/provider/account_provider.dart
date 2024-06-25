@@ -8,14 +8,12 @@ class AccountProvider extends ChangeNotifier {
   AccountModel? _account;
   bool _isLoading = false;
   String _errorMessage = '';
-  List<UniversityModel> _universities = []; // Add a field for universities
 
   AccountProvider(this._repository);
 
   AccountModel? get account => _account;
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
-  List<UniversityModel> get universities => _universities; // Expose universities
 
   Future<void> checkLoginStatus() async {
     _isLoading = true;
@@ -82,14 +80,15 @@ class AccountProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-  Future<void> fetchUniversities() async {
+  Future<List<UniversityModel>> fetchUniversities() async {
     _isLoading = true;
     notifyListeners();
 
     try {
-      _universities = await _repository.getUniversities();
+      return await _repository.getUniversities();
     } catch (e) {
       _errorMessage = 'Error fetching universities: ${e.toString()}';
+      return []; // Return an empty list in case of an error
     } finally {
       _isLoading = false;
       notifyListeners();

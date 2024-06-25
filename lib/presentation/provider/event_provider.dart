@@ -1,20 +1,24 @@
 import 'package:eventzone/data/model/account_model.dart';
+import 'package:eventzone/data/model/category_model.dart';
 import 'package:eventzone/data/model/event_model.dart';
 import 'package:eventzone/data/repo/event_repository.dart';
 import 'package:flutter/material.dart';
 
-
 class EventsProvider extends ChangeNotifier {
   final EventsRepository _repository;
   final List<EventModel> _events = [];
-  final List<EventModel> _cachedEvents = []; // Cache for events
+  final List<EventModel> _cachedEvents = [];
   String _errorMessage = '';
   bool _isLoading = false;
   bool _hasMore = true;
   bool _error = false;
   int _currentPage = 1;
   final int _pageSize = 10;
-  PaginationModel _pagination = PaginationModel(currentPage: 0, pageSize: 0, totalCount: 0, totalPages: 0);
+  PaginationModel _pagination =
+  PaginationModel(currentPage: 0, pageSize: 0, totalCount: 0, totalPages: 0);
+  String _searchTerm = '';
+  String? _selectedCategory;
+  String? _selectedUniversity;
 
   EventsProvider(this._repository);
 
@@ -24,14 +28,24 @@ class EventsProvider extends ChangeNotifier {
   bool get hasMore => _hasMore;
   bool get error => _error;
 
-
-  Future<void> loadInitialEvents() async {
+  Future<void> loadInitialEvents({
+    String searchTerm = '',
+    String? category,
+    String? university,
+  }) async {
+    _searchTerm = searchTerm;
+    _selectedCategory = category;
+    _selectedUniversity = university;
     _events.clear();
     _cachedEvents.clear();
     _currentPage = 1;
     _hasMore = true;
     if (_cachedEvents.isEmpty) {
-      await fetchEvents();
+      await fetchEvents(
+        searchTerm: searchTerm,
+        category: category,
+        university: university,
+      );
       _cachedEvents.addAll(_events);
     } else {
       _events.addAll(_cachedEvents);
@@ -42,7 +56,11 @@ class EventsProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> fetchEvents() async {
+  Future<void> fetchEvents({
+    String searchTerm = '',
+    String? category,
+    String? university,
+  }) async {
     if (_isLoading || !_hasMore) return;
 
     _isLoading = true;
@@ -54,6 +72,9 @@ class EventsProvider extends ChangeNotifier {
       final data = await _repository.fetchEvents(
         page: _currentPage,
         pageSize: _pageSize,
+        searchTerm: searchTerm,
+        category: category,
+        university: university,
       );
 
       final newEvents = data['events'];
@@ -74,17 +95,28 @@ class EventsProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> fetchMoreEvents() async {
+  Future<void> fetchMoreEvents({
+    String searchTerm = '',
+    String? category,
+    String? university,
+  }) async {
     if (_isLoading || !_hasMore) return;
     _currentPage++;
     // Adjust currentPage if it's lower than the highest fetched page
 
     try {
-      await fetchEvents();
+      await fetchEvents(
+        searchTerm: searchTerm,
+        category: category,
+        university: university,
+      );
     } catch (e) {
       _errorMessage = 'Failed to load more events: ${e.toString()}';
       _error = true;
       notifyListeners();
     }
+  }
+  Future<List<CategoryModel>> fetchCategories() async {
+    return await _repository.fetchCategories();
   }
 }

@@ -1,5 +1,5 @@
 // orders_view.dart
-import 'package:eventzone/presentation/order_provider.dart';
+import 'package:eventzone/presentation/provider/order_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
