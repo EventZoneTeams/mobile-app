@@ -1,117 +1,125 @@
-import 'package:flutter/cupertino.dart';
+import 'package:eventzone/data/model/event_detail_model.dart';
+import 'package:eventzone/data/remote_source/event_remote_data_source.dart';
+import 'package:eventzone/data/repo/event_repository.dart';
+import 'package:eventzone/presentation/view/account_view.dart';
+import 'package:eventzone/presentation/view/event_detail_view.dart';
+import 'package:eventzone/presentation/view/event_view.dart';
+import 'package:eventzone/presentation/view/login_view.dart';
+import 'package:eventzone/presentation/view/order_view.dart';
+import 'package:eventzone/presentation/view/register_view.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:eventzone/core/presentation/pages/main_page.dart';
-import 'package:eventzone/movies/presentation/views/movie_details_view.dart';
-import 'package:eventzone/movies/presentation/views/movies_view.dart';
-import 'package:eventzone/movies/presentation/views/popular_movies_view.dart';
-import 'package:eventzone/movies/presentation/views/top_rated_movies_view.dart';
-import 'package:eventzone/search/presentation/views/search_view.dart';
-import 'package:eventzone/tv_shows/presentation/views/popular_tv_shows_view.dart';
-import 'package:eventzone/tv_shows/presentation/views/top_rated_tv_shows_view.dart';
-import 'package:eventzone/tv_shows/presentation/views/tv_show_details_view.dart';
-import 'package:eventzone/tv_shows/presentation/views/tv_shows_view.dart';
-
+import 'package:eventzone/core/presentation/main_page.dart';
 import 'package:eventzone/core/resources/app_routes.dart';
-import 'package:eventzone/watchlist/presentation/views/watchlist_view.dart';
 
-const String moviesPath = '/movies';
-const String movieDetailsPath = 'movieDetails/:movieId';
-const String popularMoviesPath = 'popularMovies';
-const String topRatedMoviesPath = 'topRatedMovies';
-const String tvShowsPath = '/tvShows';
-const String tvShowDetailsPath = 'tvShowDetails/:tvShowId';
-const String popularTVShowsPath = 'popularTVShows';
-const String topRatedTVShowsPath = 'topRatedTVShows';
-const String searchPath = '/search';
-const String watchlistPath = '/watchlist';
+const String eventsPath = '/events';
+const String orderPath = '/orders';
+const String packagesPath = '/packages';
+const String accountPath = '/account';
+const String eventDetailsPath = 'events/:eventId'; // Note the dynamic segment for eventId
+const String loginPath = 'login';
+const String registerPath = 'register';
 
 class AppRouter {
-  GoRouter router = GoRouter(
-    initialLocation: moviesPath,
+  // final OrderRepository _orderRepository = OrderRepository(OrderRemoteDataSource());
+  GoRouter get router => GoRouter(
+    initialLocation: eventsPath,
     routes: [
       ShellRoute(
         builder: (context, state, child) => MainPage(child: child),
         routes: [
           GoRoute(
-            name: AppRoutes.moviesRoute,
-            path: moviesPath,
+            name: AppRoutes.events,
+            path: eventsPath,
             pageBuilder: (context, state) => const NoTransitionPage(
-              child: MoviesView(),
+              child: EventsScreen(),
             ),
             routes: [
               GoRoute(
-                name: AppRoutes.movieDetailsRoute,
-                path: movieDetailsPath,
-                pageBuilder: (context, state) => CupertinoPage(
-                  child: MovieDetailsView(
-                    movieId: int.parse(state.params['movieId']!),
-                  ),
-                ),
+                name: AppRoutes.eventDetails,
+                path: eventDetailsPath,
+                builder: (context, state) {
+                  final eventId = int.parse(state.pathParameters['eventId']!);
+                  return EventDetailScreenWrapper(eventId: eventId);
+                },
               ),
-              GoRoute(
-                name: AppRoutes.popularMoviesRoute,
-                path: popularMoviesPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: PopularMoviesView(),
-                ),
-              ),
-              GoRoute(
-                name: AppRoutes.topRatedMoviesRoute,
-                path: topRatedMoviesPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: TopRatedMoviesView(),
-                ),
-              ),
+
             ],
           ),
           GoRoute(
-            name: AppRoutes.tvShowsRoute,
-            path: tvShowsPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: TVShowsView(),
-            ),
+            name: AppRoutes.orders,
+            path: orderPath,
+            builder: (context, state) => const OrdersScreen(),
+          ),
+          // GoRoute(
+          //   name: AppRoutes.packages,
+          //   path: packagesPath,
+          //   pageBuilder: (context, state) => const NoTransitionPage(
+          //     child: PackagesView(),
+          //   ),
+          // ),
+          GoRoute(
+            name: AppRoutes.account,
+            path: accountPath,
+            builder: (context, state) => const AccountScreen(),
             routes: [
               GoRoute(
-                name: AppRoutes.tvShowDetailsRoute,
-                path: tvShowDetailsPath,
-                pageBuilder: (context, state) => CupertinoPage(
-                  child: TVShowDetailsView(
-                    tvShowId: int.parse(state.params['tvShowId']!),
-                  ),
-                ),
+                name: AppRoutes.login, // Choose a suitable name
+                path: loginPath,
+                builder: (context, state) => const LoginScreen(),
               ),
               GoRoute(
-                name: AppRoutes.popularTvShowsRoute,
-                path: popularTVShowsPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: PopularTVShowsView(),
-                ),
+                name: AppRoutes.register, // Choose a suitable name
+                path: registerPath,
+                builder: (context, state) => const RegistrationScreen(),
               ),
-              GoRoute(
-                name: AppRoutes.topRatedTvShowsRoute,
-                path: topRatedTVShowsPath,
-                pageBuilder: (context, state) => const CupertinoPage(
-                  child: TopRatedTVShowsView(),
-                ),
-              ),
-            ],
-          ),
-          GoRoute(
-            name: AppRoutes.searchRoute,
-            path: searchPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: SearchView(),
-            ),
-          ),
-          GoRoute(
-            name: AppRoutes.watchlistRoute,
-            path: watchlistPath,
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: WatchlistView(),
-            ),
+            ]
           ),
         ],
-      )
+      ),
     ],
   );
+}
+
+// Wrapper widget to handle event ID and build EventDetailScreen
+class EventDetailScreenWrapper extends StatefulWidget {
+  final int eventId;
+
+  const EventDetailScreenWrapper({super.key, required this.eventId});
+
+  @override
+  EventDetailScreenWrapperState createState() => EventDetailScreenWrapperState();
+}
+
+class EventDetailScreenWrapperState extends State<EventDetailScreenWrapper> {
+  late Future<EventDetailModel> _eventFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _eventFuture = _fetchEventDetails();
+  }
+
+  Future<EventDetailModel> _fetchEventDetails() async {
+    final eventRepository = EventsRepository(EventsRemoteDataSource());
+    return eventRepository.getEventById(widget.eventId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<EventDetailModel>(
+      future: _eventFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (snapshot.hasData) {
+          return EventDetailScreen(event: snapshot.data!);
+        } else {
+          return const Center(child: Text('No event found.'));
+        }
+      },
+    );
+  }
 }

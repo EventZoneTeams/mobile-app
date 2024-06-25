@@ -1,7 +1,5 @@
-import 'package:eventzone/tv_shows/domain/usecases/get_season_details_usecase.dart';
-
 class ApiConstants {
-  static const String baseUrl = '1';
+  static const String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
 
   static const String event = '$baseUrl/events';
 
@@ -22,44 +20,15 @@ class ApiConstants {
   // static const String eventFeedback = '$baseUrl/event-products';
 
   // movies paths
-  static String userLogin(String uid)
-  {
-    return  '$user/$uid';
+  static String userLogin(int uid) {
+    return '$user/$uid';
   }
 
-  static String userRegister(String )
-
-  static const String topRatedMoviesPath =
-
-  static String getMovieDetailsPath(int movieId) {
+  static String userRegister() {
+    return '$user/register';
   }
 
-  static String getAllPopularMoviesPath(int page) {
-  }
-
-  static String getAllTopRatedMoviesPath(int page) {
-  }
-
-  // tv shows paths
-  static const String onAirTvShowsPath =
-
-  static const String popularTvShowsPath =
-
-  static const String topRatedTvShowsPath =
-
-  static String getTvShowDetailsPath(int tvShowId) {
-  }
-
-  static String getSeasonDetailsPath(SeasonDetailsParams params) {
-  }
-
-  static String getAllPopularTvShowsPath(int page) {
-  }
-
-  static String getAllTopRatedTvShowsPath(int page) {
-  }
-
-  // search paths
-  static String getSearchPath(String title) {
+  static String getEventDetailPath(int eventId){
+    return '$event/$eventId';
   }
 }

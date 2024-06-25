@@ -1,3 +1,3 @@
 class AppConstants {
-  static const int carouselSliderItemsCount = 4;
+  static const int carouselSliderItemsCount = 20;
 }
