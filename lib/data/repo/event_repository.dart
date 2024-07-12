@@ -22,10 +22,8 @@ class EventsRepository {
         category: category,
         university: university,
       );
-      print('Fetched events for page $page: $data');
       return data;
-    } catch (e, stackTrace) {
-      print('Error fetching events for page $page: $e, Stacktrace: $stackTrace');
+    } catch (e) {
       rethrow;
     }
   }
@@ -34,11 +32,17 @@ class EventsRepository {
     try {
       return await _remoteDataSource.getEventById(eventId);
     } catch (e) {
-      print('Error fetching event details: $e'); // Log the error
       rethrow; // Rethrow the error to be handled by the caller
     }
   }
   Future<List<CategoryModel>> fetchCategories() async {
     return await _remoteDataSource.fetchCategories();
+  }
+  Future<List<EventPackageModel>> fetchEventPackages(int eventId) async {
+    try {
+      return await _remoteDataSource.fetchEventPackages(eventId);
+    } catch (e) {
+      rethrow; // Rethrow the error to be handled by the caller
+    }
   }
 }

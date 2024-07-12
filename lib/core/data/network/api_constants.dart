@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
+  static const String baseUrl = 'https://ez-api.azurewebsites.net/swagger/index.html';
 
   static const String event = '$baseUrl/events';
 
@@ -19,16 +19,4 @@ class ApiConstants {
   //
   // static const String eventFeedback = '$baseUrl/event-products';
 
-  // movies paths
-  static String userLogin(int uid) {
-    return '$user/$uid';
-  }
-
-  static String userRegister() {
-    return '$user/register';
-  }
-
-  static String getEventDetailPath(int eventId){
-    return '$event/$eventId';
-  }
 }

@@ -1,5 +1,6 @@
 import 'package:eventzone/data/model/account_model.dart';
 import 'package:eventzone/data/model/category_model.dart';
+import 'package:eventzone/data/model/event_detail_model.dart';
 import 'package:eventzone/data/model/event_model.dart';
 import 'package:eventzone/data/repo/event_repository.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class EventsProvider extends ChangeNotifier {
   bool _hasMore = true;
   bool _error = false;
   int _currentPage = 1;
-  final int _pageSize = 10;
+  final  int _pageSize = 3;
   PaginationModel _pagination =
   PaginationModel(currentPage: 0, pageSize: 0, totalCount: 0, totalPages: 0);
   String _searchTerm = '';
@@ -118,5 +119,28 @@ class EventsProvider extends ChangeNotifier {
   }
   Future<List<CategoryModel>> fetchCategories() async {
     return await _repository.fetchCategories();
+  }
+
+  List<EventPackageModel> _eventPackages = [];
+  bool _isLoadingPackages = false;
+  String _packageErrorMessage = '';
+
+  List<EventPackageModel> get eventPackages => _eventPackages;
+  bool get isLoadingPackages => _isLoadingPackages;
+  String get packageErrorMessage => _packageErrorMessage;
+
+  Future<void> fetchEventPackagesForEvent(int eventId) async {
+    _isLoadingPackages = true;
+    _packageErrorMessage = '';
+    notifyListeners();
+
+    try {
+      _eventPackages = await _repository.fetchEventPackages(eventId);
+    } catch (e) {
+      _packageErrorMessage = 'Failed to load event packages: ${e.toString()}';
+    } finally {
+      _isLoadingPackages = false;
+      notifyListeners();
+    }
   }
 }

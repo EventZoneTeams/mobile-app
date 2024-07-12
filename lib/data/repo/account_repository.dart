@@ -1,60 +1,65 @@
 import 'package:eventzone/data/model/account_model.dart';
+import 'package:eventzone/data/model/secure_storage.dart';
 import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AccountRepository {
   final AccountRemoteDataSource _remoteDataSource;
-  final storage = const FlutterSecureStorage();
 
   AccountRepository(this._remoteDataSource);
 
   Future<bool> isLoggedIn() async {
-    return await storage.read(key: 'jwt') != null; // Check for JWT existence
+    return await StorageService.secureStorage.read(key: 'jwt') != null;
   }
 
   Future<AccountModel?> getAccountDetails() async {
-    final jwtToken = await storage.read(key: 'jwt');
-
+    final jwtToken = await StorageService.secureStorage.read(key: 'jwt');
     if (jwtToken == null) {
       return null; // Not logged in
     }
 
     try {
-      return await _remoteDataSource.getAccountDetails(jwtToken);
+      final result = await _remoteDataSource.getAccountDetails(jwtToken);
+      await StorageService.secureStorage.write(key: 'userId', value: result.id.toString());
+      return result;
     } catch (e) {
-      print('Failed to fetch account details: ${e.toString()}');
-      return null;
+      StorageService.secureStorage.delete(key: 'jwt');
+      rethrow;
     }
   }
 
   Future<void> login(String email, String password) async {
     try {
       final loginResponse = await _remoteDataSource.login(email, password);
-      if ( loginResponse['status'] == true) {
+      if (loginResponse['status'] == true) {
         final jwtToken = loginResponse['jwt'] as String;
         final refreshToken = loginResponse['jwt-refresh-token'] as String;
-        await storage.write(key: 'jwt', value: jwtToken);
-        await storage.write(key: 'refresh_token', value: refreshToken);
+        await StorageService.secureStorage.write(key: 'jwt', value: jwtToken);
+        await StorageService.secureStorage.write(key: 'refresh_token', value: refreshToken);
       } else {
         final message = loginResponse['message'] as String? ?? 'Login failed';
         throw Exception(message);
       }
     } catch (e) {
-      throw Exception('Failed to login: ${e.toString()}');
+      rethrow;
     }
   }
 
   Future<void> register(RegisterAccountModel account) async {
-    // Delegate to remote data source
     await _remoteDataSource.register(account);
   }
 
   Future<void> logout() async {
-    await storage.delete(key: 'jwt');
-    await storage.delete(key: 'refresh_token');
-    // Potentially clear other relevant data
+    await StorageService.secureStorage.delete(key: 'jwt');
+    await StorageService.secureStorage.delete(key: 'refresh_token');
   }
+
   Future<List<UniversityModel>> getUniversities() async {
     return await _remoteDataSource.getUniversities();
+  }
+
+  Future<String?> createTransaction(int amount) async {
+    final token = await StorageService.secureStorage.read(key: 'jwt');
+    if (token == null || token.isEmpty) throw Exception("jwt null");
+    return _remoteDataSource.createTransaction(token, amount);
   }
 }

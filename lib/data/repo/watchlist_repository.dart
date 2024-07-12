@@ -13,7 +13,7 @@ class WatchlistRepository {
       return events; // Return an empty list if events is null
     } catch (e) {
       // Handle errors
-      return []; // Return an empty list in case of an error
+      rethrow;
     }
   }
 

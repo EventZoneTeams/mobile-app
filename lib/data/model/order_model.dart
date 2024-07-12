@@ -1,31 +1,35 @@
 class Order {
-  final int id;
+  final int? id;
   final int eventId;
-  final int userId;
-  final double totalAmount;
+  final int totalAmount;
   final String status;
-  final List<OrderDetail>? orderDetails; // Can be null initially, loaded on demand
+  final List<OrderDetail> eventOrderDetails;
 
   Order({
-    required this.id,
+    this.id,
     required this.eventId,
-    required this.userId,
     required this.totalAmount,
     required this.status,
-    this.orderDetails,
+    required this.eventOrderDetails,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) {
     return Order(
       id: json['id'] as int,
       eventId: json['event-id'] as int,
-      userId: json['user-id'] as int,
-      totalAmount: (json['total-amount'] as num).toDouble(),
+      totalAmount: json['total-amount'] as int,
       status: json['status'] as String,
-      orderDetails: (json['event-order-details'] as List<dynamic>?)
-          ?.map((detail) => OrderDetail.fromJson(detail as Map<String, dynamic>))
+      eventOrderDetails: (json['event-order-details'] as List<dynamic>)
+          .map((detail) => OrderDetail.fromJson(detail as Map<String, dynamic>))
           .toList(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'event-id': eventId,
+      'event-order-details': eventOrderDetails.map((detail) => detail.toJson()).toList(),
+    }; // Removed 'user-id'
   }
 }
 
@@ -34,7 +38,7 @@ class OrderDetail {
   final int packageId;
   final int eventOrderId;
   final int quantity;
-  final double price;
+  final int price; // Change to int to match the response
 
   OrderDetail({
     required this.id,
@@ -50,7 +54,15 @@ class OrderDetail {
       packageId: json['package-id'] as int,
       eventOrderId: json['event-order-id'] as int,
       quantity: json['quantity'] as int,
-      price: (json['price'] as num).toDouble(),
+      price: json['price'] as int, // No need for conversion
     );
+  }
+
+  // Add a toJson() method for creating order requests
+  Map<String, dynamic> toJson() {
+    return {
+      'package-id': packageId,
+      'quantity': quantity,
+    };
   }
 }

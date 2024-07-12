@@ -22,7 +22,7 @@ class ServerException implements Exception {
 }
 
 class EventsRemoteDataSource {
-  final String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
+  final String baseUrl = 'https://ez-api.azurewebsites.net/api/v1';
 
   // Singleton pattern for http.Client (optional)
   static final http.Client _client = http.Client();
@@ -60,7 +60,6 @@ class EventsRemoteDataSource {
         final List<EventModel> events = (jsonData['data'] as List)
             .map((json) => EventModel.fromJson(json))
             .toList();
-        print('Count event: ${events.length}');
 
         final PaginationModel pagination = PaginationModel.fromJson(jsonData);
         return {
@@ -128,6 +127,21 @@ class EventsRemoteDataSource {
     } else {
       throw NetworkException(
           'Failed to load categories (HTTP ${response.statusCode})');
+    }
+  }
+
+  Future<List<EventPackageModel>> fetchEventPackages(int eventId) async {
+    final url = Uri.parse('$baseUrl/events/$eventId/event-packages');
+    final response = await _client.get(url, headers: {'accept': '*/*'});
+
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonData = json.decode(response.body);
+      return jsonData
+          .map((packageJson) => EventPackageModel.fromJson(packageJson))
+          .toList();
+    } else {
+      throw NetworkException(
+          'Failed to load event packages (HTTP ${response.statusCode})');
     }
   }
 }

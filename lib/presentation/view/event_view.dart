@@ -1,6 +1,5 @@
 import 'package:eventzone/data/model/category_model.dart';
 import 'package:eventzone/data/remote_source/account_remote_data_source.dart';
-import 'package:eventzone/presentation/component/event_card_view.dart';
 import 'package:eventzone/presentation/component/event_list.dart';
 import 'package:eventzone/presentation/component/search_filters.dart';
 import 'package:eventzone/presentation/provider/account_provider.dart';
@@ -24,7 +23,7 @@ class EventsScreenState extends State<EventsScreen>
   String? _selectedUniversity;
   bool _showFilters = false; // State to control filter visibility
   List<CategoryModel> _categories = []; // Store fetched categories
-  List<UniversityModel> _universities  = []; // Store fetched categories
+  List<UniversityModel> _universities = []; // Store fetched categories
 
   @override
   bool get wantKeepAlive => true;
@@ -60,38 +59,42 @@ class EventsScreenState extends State<EventsScreen>
   Future<void> _fetchCategories() async {
     try {
       final categories = await Provider.of<EventsProvider>(context,
-          listen: false)
+              listen: false)
           .fetchCategories(); // Assuming you add this method to EventsProvider
       setState(() {
         _categories = categories;
       });
     } catch (e) {
       // Handle error fetching categories
-      print('Error fetching categories: $e');
+      rethrow;
     }
   }
 
   Future<void> _fetchUniversities() async {
+    setState(() {
+    });
     try {
-      final universities = await Provider.of<AccountProvider>(context,
-          listen: false)
-          .fetchUniversities(); // Assuming you add this method to EventsProvider
+      final universities =
+          await Provider.of<AccountProvider>(context, listen: false)
+              .fetchUniversities();
       setState(() {
         _universities = universities;
       });
     } catch (e) {
       // Handle error fetching categories
-      print('Error fetching universities: $e');
+      rethrow;
+    } finally {
+      setState(() {
+      });
     }
   }
+
   void _scrollListener() {
     if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 100) {
       _fetchMoreEvents();
     }
   }
-
-
 
   @override
   void initState() {
@@ -100,7 +103,7 @@ class EventsScreenState extends State<EventsScreen>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadEvents();
       _fetchCategories();
-      _fetchUniversities();// Fetch categories when the screen initializes
+      _fetchUniversities(); // Fetch categories when the screen initializes
     });
   }
 
@@ -147,38 +150,39 @@ class EventsScreenState extends State<EventsScreen>
                   ? CrossFadeState.showSecond
                   : CrossFadeState.showFirst,
               duration: const Duration(milliseconds: 200),
-            ),actions: [
-            IconButton(
-              icon: Icon(_showFilters ? Icons.close : Icons.search),
-              onPressed: () {
-                setState(() {
-                  _showFilters = !_showFilters; // Toggle filter visibility
-                });
-              },
             ),
-          ],
-            bottom: _showFilters
-                ? PreferredSize(
-              preferredSize: const Size.fromHeight(80.0),
-              child: EventSearchFilters(
-                selectedCategory: _selectedCategory,
-                selectedUniversity: _selectedUniversity,
-                categories: _categories,
-                universities: _universities,
-                onCategoryChanged: (value) {
+            actions: [
+              IconButton(
+                icon: Icon(_showFilters ? Icons.close : Icons.search),
+                onPressed: () {
                   setState(() {
-                    _selectedCategory = value;
-                    _loadEvents();
-                  });
-                },
-                onUniversityChanged: (value) {
-                  setState(() {
-                    _selectedUniversity = value;
-                    _loadEvents();
+                    _showFilters = !_showFilters; // Toggle filter visibility
                   });
                 },
               ),
-            )
+            ],
+            bottom: _showFilters
+                ? PreferredSize(
+                    preferredSize: const Size.fromHeight(80.0),
+                    child: EventSearchFilters(
+                      selectedCategory: _selectedCategory,
+                      selectedUniversity: _selectedUniversity,
+                      categories: _categories,
+                      universities: _universities,
+                      onCategoryChanged: (value) {
+                        setState(() {
+                          _selectedCategory = value;
+                          _loadEvents();
+                        });
+                      },
+                      onUniversityChanged: (value) {
+                        setState(() {
+                          _selectedUniversity = value;
+                          _loadEvents();
+                        });
+                      },
+                    ),
+                  )
                 : null,
           ),
         ),

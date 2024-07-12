@@ -7,3 +7,7 @@ class ServerException implements Exception {
 }
 
 class DatabaseException implements Exception {}
+class InvalidCredentialsException implements Exception {
+  final String message;
+  InvalidCredentialsException(this.message);
+}

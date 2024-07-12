@@ -20,12 +20,13 @@ class AccountProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final isLoggedIn = await _repository.isLoggedIn();
+      var isLoggedIn = await _repository.isLoggedIn();
       if (isLoggedIn) {
         _account = await _repository.getAccountDetails();
       }
     } catch (e) {
       _errorMessage = 'Error checking login status: ${e.toString()}';
+      logout();
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -39,9 +40,9 @@ class AccountProvider extends ChangeNotifier {
 
     try {
       await _repository.login(email, password);
-      _account = await _repository.getAccountDetails(); // Fetch account details after successful login
+      _account = await _repository.getAccountDetails();
     } catch (e) {
-      _errorMessage = 'Error logging in: ${e.toString()}';
+      rethrow;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -58,7 +59,7 @@ class AccountProvider extends ChangeNotifier {
       // You might want to automatically log in the user after registration
       // ...
     } catch (e) {
-      _errorMessage = 'Error registering: ${e.toString()}';
+      rethrow;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -74,7 +75,7 @@ class AccountProvider extends ChangeNotifier {
       await _repository.logout();
       _account = null; // Clear account details after logout
     } catch (e) {
-      _errorMessage = 'Error logging out: ${e.toString()}';
+      rethrow;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -87,11 +88,40 @@ class AccountProvider extends ChangeNotifier {
     try {
       return await _repository.getUniversities();
     } catch (e) {
-      _errorMessage = 'Error fetching universities: ${e.toString()}';
-      return []; // Return an empty list in case of an error
+      rethrow;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
+  Future<String> createTransaction(int amount) async {
+    try {
+      final url = await _repository.createTransaction(amount);
+        return url??'';
+    } catch (e) {
+      // Handle the exception (e.g., display an error message)
+      _errorMessage = 'Failed to create transaction: ${e.toString()}';
+      notifyListeners();
+      return ''; // Or rethrow the exception if needed
+    }
+  }
+  Future<bool> isLoggedIn() async {
+    return await _repository.isLoggedIn();
+  }
+  // String extractHashKeyFromUrl(String url) {
+  //   // Find the start of the hashkey parameter
+  //   int startIndex = url.indexOf('vnp_SecureHash=');
+  //   if (startIndex == -1) {
+  //     return ''; // Hashkey not found
+  //   }
+
+  //   // Find the end of the hashkey (either end of string or '&' for next parameter)
+  //   int endIndex = url.indexOf('&', startIndex + 'vnp_SecureHash='.length);
+  //   if (endIndex == -1) {
+  //     endIndex = url.length; // Hashkey is the last parameter
+  //   }
+  //
+  //   // Extract the hashkey substring
+  //   return url.substring(startIndex + 'vnp_SecureHash='.length, endIndex);
+  // }
 }

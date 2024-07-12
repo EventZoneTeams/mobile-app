@@ -4,13 +4,13 @@ import 'package:intl/intl.dart';
 class DateOfBirthInput extends StatefulWidget {
   final TextEditingController controller;
 
-  const DateOfBirthInput({Key? key, required this.controller}) : super(key: key);
+  const DateOfBirthInput({super.key, required this.controller});
 
   @override
-  _DateOfBirthInputState createState() => _DateOfBirthInputState();
+  DateOfBirthInputState createState() => DateOfBirthInputState();
 }
 
-class _DateOfBirthInputState extends State<DateOfBirthInput> {
+class DateOfBirthInputState extends State<DateOfBirthInput> {
   DateTime? _selectedDate;
 
   void _presentDatePicker() {

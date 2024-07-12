@@ -3,8 +3,7 @@ import 'package:eventzone/data/model/account_model.dart';
 import 'package:http/http.dart' as http;
 
 class AccountRemoteDataSource {
-  final String baseUrl = 'https://eventzone.azurewebsites.net/api/v1';
-
+  final String baseUrl = 'https://ez-api.azurewebsites.net/api/v1';
   Future<Map<String, dynamic>> login(String email, String password) async {
     final url = Uri.parse('$baseUrl/users/login');
     final headers = {'Content-Type': 'application/json'};
@@ -12,10 +11,11 @@ class AccountRemoteDataSource {
 
     final response = await http.post(url, headers: headers, body: body);
 
+    final json = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      return jsonDecode(response.body);
+      return json;
     } else {
-      throw Exception('Failed to login: ${response.statusCode}');
+      throw Exception('Failed to login: ${json['message']}');
     }
   }
 
@@ -30,10 +30,27 @@ class AccountRemoteDataSource {
 
     if (response.statusCode == 200) {
       final jsonMap = jsonDecode(response.body);
-      return AccountModel.fromJson(jsonMap);
+      // Fetch wallets for the user
+      final walletResponse = await http.get(
+          Uri.parse('$baseUrl/wallets'),
+          headers: headers
+      );
+      final walletJson = jsonDecode(walletResponse.body);
+      if (walletResponse.statusCode == 200) {
+        final personalWallet = (walletJson['data'] as List)
+            .firstWhere((wallet) => wallet['wallet-type'] == 'PERSONAL', orElse: () => null);
+
+        double personalBalance = 0.0;
+        if (personalWallet != null) {
+          personalBalance = (personalWallet['balance'] as num).toDouble();
+        }
+
+        return AccountModel.fromJson(jsonMap['data'], personalBalance);
+      } else {
+        throw Exception('Failed to fetch wallets! ${walletJson['message']}');
+      }
     } else {
-      throw Exception(
-          'Failed to fetch account details: ${response.statusCode}');
+      throw Exception('Fail getting account information!');
     }
   }
 
@@ -52,12 +69,10 @@ class AccountRemoteDataSource {
       'image': 'a',
       'university': account.university,
     });
-    print(http.post(url, headers: headers, body: body));
     final response = await http.post(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {
       // Registration successful (you might want to parse the response for confirmation)
-      print(response);
     } else {
       // Handle registration errors
       final jsonMap = jsonDecode(response.body);
@@ -71,6 +86,26 @@ class AccountRemoteDataSource {
     await Future.delayed(const Duration(milliseconds: 500)); // Simulate network delay
 
     return universityList; // Return the list of UniversityModel objects
+  }
+  Future<String?> createTransaction(String jwtToken, int amount) async {
+    final url = Uri.parse('$baseUrl/wallets/transactions');
+    final headers = {
+      'accept': '*/*',
+      'Authorization': 'Bearer $jwtToken',
+      'Content-Type': 'application/json' // Add this lin
+    };
+    final body = jsonEncode({'amount': amount});
+    final response = await http.post(url, headers: headers, body: body);
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      if (jsonResponse['success'] == true) {
+        return jsonResponse['data'] as String? ?? ''; // Extract payment URL from 'data'
+      } else {
+        throw Exception(jsonResponse['message'] as String? ?? 'Transaction failed');
+      }
+    } else {
+      throw Exception('Failed to create transaction: ${response.statusCode}');
+    }
   }
 // Add other API interaction methods as needed
 // ...

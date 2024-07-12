@@ -50,6 +50,8 @@ class EventSearchFiltersState extends State<EventSearchFilters> {
                   flex: 35,
                   child: DropdownButtonFormField<String>(
                     value: _selectedUniversityCode,
+                    menuMaxHeight: 500,
+                    isExpanded: true,
                     decoration: const InputDecoration(
                       labelText: 'University',
                       contentPadding:
@@ -62,10 +64,7 @@ class EventSearchFiltersState extends State<EventSearchFilters> {
                         (Text(university.code)),
                         value: university.code,
                         isSelected: _selectedUniversityCode == university.code,
-                        child: SizedBox(
-                          width: 100, // Consider adjusting this width if needed
-                          child: Text(university.name),
-                        ),
+                          child: Text(university.name, maxLines: 5, overflow: TextOverflow.ellipsis,),
                       );
                     }).toList(),
                     onChanged: (value) {

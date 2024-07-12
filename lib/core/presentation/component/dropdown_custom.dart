@@ -17,10 +17,7 @@ class AppDropdownMenuItem<T> extends DropdownMenuItem<T> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 65,
-      decoration: const BoxDecoration(
-        color: AppColors.primaryBackground,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 8.0), // Add padding here
       child: Align( // Use Align widget for vertical centering
         alignment: Alignment.centerLeft,
         child: DefaultTextStyle(

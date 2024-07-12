@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:eventzone/data/model/event_model.dart';
 
 class WatchlistRemoteDataSource {
-  final String baseUrl = 'https://eventzone.azurewebsites.net/api/v1/'; // Replace with your API base URL
+  final String baseUrl = 'https://ez-api.azurewebsites.net/api/v1/'; // Replace with your API base URL
 
   Future<List<EventModel>> getWatchlistEventsByUserId(int userId) async {
     // final url = Uri.parse('$apiBaseUrl/watchlist?userId=$userId');

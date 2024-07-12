@@ -8,7 +8,6 @@ class EventModel {
   final String eventCategoryName;
   final String eventCategoryImageUrl;
   final String? university;
-  final bool isDonation;
   final double totalCost;
 
   const EventModel({
@@ -21,13 +20,10 @@ class EventModel {
     required this.eventCategoryName,
     required this.eventCategoryImageUrl,
     required this.university,
-    required this.isDonation,
     required this.totalCost,
   });
 
   factory EventModel.fromJson(Map<String, dynamic> json) {
-    final isDonation = json['is-donation'] as bool;
-
     return EventModel(
       id: json['id'] as int,
       name: json['name'] as String,
@@ -38,8 +34,7 @@ class EventModel {
       eventCategoryName: json['event-category']['title'] as String,
       eventCategoryImageUrl: json['event-category']['image-url'] as String,
       university: json['university'] as String?,
-      isDonation: isDonation,
-      totalCost: isDonation ? (json['total-cost'] as num).toDouble() : 0.0,
+      totalCost: (json['total-cost'] as num).toDouble()
     );
   }
 }

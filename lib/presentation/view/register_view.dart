@@ -68,9 +68,9 @@ class RegistrationScreenState extends State<RegistrationScreen> {
         password: _passwordController.text,
         fullName: _fullNameController.text,
         dob: _dobController.text,
-        gender: _genderController.text,
+        gender: _selectedGender ?? 'NotMale', // Provide a default value if no gender is selected
+        university: _selectedUniversity?.name ?? 'NotFPTU',
         image: _imageController.text,
-        university: _universityController.text,
       );
       // Trigger registration and store the result
       final registrationResult = await Provider.of<AccountProvider>(context, listen: false).register(account);

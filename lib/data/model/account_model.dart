@@ -3,20 +3,18 @@ class AccountModel {
   final String email;
   final String unsignFullName;
   final String fullName;
-  final String password;
   final String dob;
   final String gender;
   final String image;
   final String? university;
   final bool isDeleted;
   final String roleName;
-  final dynamic role; // You might need to define a specific type for 'role'
+  final double balance;
 
   AccountModel({
     required this.id,
     required this.email,
     required this.unsignFullName,
-    required this.password,
     required this.fullName,
     required this.dob,
     required this.gender,
@@ -24,23 +22,22 @@ class AccountModel {
     required this.university,
     required this.isDeleted,
     required this.roleName,
-    required this.role,
+    required this.balance
   });
 
-  factory AccountModel.fromJson(Map<String, dynamic> json) {
+  factory AccountModel.fromJson(Map<String, dynamic> json, double balance) {
     return AccountModel(
       id: json['id'] as int,
       email: json['email'] as String,
-      unsignFullName: json['unsign-full-name'] as String,
-      password: json['password'] as String,
-      fullName: json['full-name'] as String,
-      dob: json['dob'] as String,
+      unsignFullName: json['unsign-full-name'] as String? ?? '',
+      fullName: json['full-name'] as String? ?? '',
+      dob: json['dob'] as String? ?? '',
       gender: json['gender'] as String,
-      image: json['image'] as String,
-      university: json['university'] as String?,
+      image: json['image'] as String? ?? '',
+      university: json['university'] as String? ?? '',
       isDeleted: json['is-deleted'] as bool,
-      roleName: json['role-name'] as String,
-      role: json['role'], // Define a proper type if needed
+      roleName: json['role-name'] as String? ?? 'Student',
+      balance: balance
     );
   }
 }
